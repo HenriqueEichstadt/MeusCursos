@@ -14,5 +14,9 @@ namespace CaixaEletronico
 
         public double saldo;
 
+        public long CPF;
+
+        public int agencia;
+
     }
 }
