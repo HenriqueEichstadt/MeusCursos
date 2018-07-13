@@ -18,5 +18,24 @@ namespace CaixaEletronico
 
         public int agencia;
 
+        public void deposita (double valorDepositado)
+        {
+            if (valorDepositado > 0)
+            {
+                this.saldo += valorDepositado;
+            }
+        }
+        public void saca (double valorSacado)
+        {
+            if (this.saldo >= valorSacado && valorSacado > 0)
+            {
+                this.saldo -= valorSacado;
+            }
+        }
+        public void Transfere(double valor, Conta destino)
+        {
+            this.saca(valor);
+            destino.deposita(valor);
+        }
     }
 }

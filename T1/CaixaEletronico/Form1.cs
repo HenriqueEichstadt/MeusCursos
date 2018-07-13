@@ -19,22 +19,19 @@ namespace CaixaEletronico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Conta umaConta = new Conta();
-            umaConta.numero = 1;
-            umaConta.titular = "Joaquim José";
-            umaConta.saldo = 2000.0;
-            umaConta.CPF = 12345678912;
-            umaConta.agencia = 085;
+            Conta henrique = new Conta();
+            henrique.deposita(2000.0);
 
-            Conta outraConta = new Conta();
-            outraConta.numero = 2;
-            outraConta.titular = "Silva Xavier";
-            outraConta.saldo = 1500.0;
-            outraConta.CPF = 98765432198;
-            outraConta.agencia = 010;
+            Conta maria = new Conta();
+            maria.deposita(1000.0);
 
-            MessageBox.Show(" O titular da conta: " + umaConta.titular + "\n O número da conta: " + umaConta.numero + "\n O Saldo: " + umaConta.saldo + "\n O CPF: " + umaConta.CPF + "\n A Agência: " + umaConta.agencia);
-            MessageBox.Show(" O titular da conta: " + outraConta.titular + "\n O número da conta: " + outraConta.numero + "\n O Saldo: " + outraConta.saldo + "\n O CPF: " + outraConta.CPF + "\n A Agência: " + outraConta.agencia);
+            henrique.Transfere(200.0, maria);
+            henrique.deposita(150.0);
+            maria.saca(50.0);
+
+            MessageBox.Show("guilherme = " + henrique.saldo);
+            MessageBox.Show("mauricio = " + maria.saldo);
         }
     }
 }
+
