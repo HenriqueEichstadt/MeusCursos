@@ -8,13 +8,13 @@ namespace CaixaEletronico
 {
     class Conta
     {
+        public Cliente cliente;
+
         public int numero;
 
-        public string titular;
+        public Cliente titular;
 
         public double saldo;
-
-        public long CPF;
 
         public int agencia;
 
