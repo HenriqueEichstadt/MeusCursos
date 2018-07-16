@@ -25,16 +25,37 @@ namespace CaixaEletronico
                 this.saldo += valorDepositado;
             }
         }
-        public void saca (double valorSacado)
+        public bool Sacar (double valorSacado)
         {
-            if (this.saldo >= valorSacado && valorSacado > 0)
+            if (valorSacado > this.saldo || valorSacado < 0)
             {
-                this.saldo -= valorSacado;
+                return false;
+            }
+            else
+            {
+                if (this.titular.maiorDeIdade())
+                {
+                    this.saldo -= valorSacado;
+                    return true;
+                }
+                else
+                {
+                    if (valorSacado <= 200)
+                    {
+                        this.saldo -= valorSacado;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
             }
         }
+
         public void Transfere(double valor, Conta destino)
         {
-            this.saca(valor);
+            this.Sacar(valor);
             destino.deposita(valor);
         }
     }

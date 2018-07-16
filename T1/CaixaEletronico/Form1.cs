@@ -19,21 +19,26 @@ namespace CaixaEletronico
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Conta conta = new Conta();
-            Cliente cliente = new Cliente();
-            conta.cliente = cliente;
-            conta.titular = cliente;
-            cliente.nome = "Fulano de Souza";
-            /*Outras duas formas de fazer
-            conta.titular = "Victor";
-            conta.cliente.nome = "Victor";
-            */
-            conta.cliente.rg = "12345678-9";
-            /*Outra forma de fazer
-            cliente.rg = "12345678-9";
-             */
-            MessageBox.Show("Nome do Cliente: " + conta.titular.nome);
+            Conta contaHenrique = new Conta();
+            contaHenrique.numero = 1;
+            contaHenrique.saldo = 5000.0;
+
+            Cliente clienteHenrique = new Cliente();
+            clienteHenrique.nome = "Henrique";
+            clienteHenrique.idade = 18;
+
+            contaHenrique.titular = clienteHenrique;
+
+            bool sacou = contaHenrique.Sacar(500.0);
+
+            if (sacou)
+            {
+                MessageBox.Show("O saldo do Henrique apos saque de R$500,00: " + contaHenrique.saldo);
+            }
+            else
+            {
+                MessageBox.Show("Não foi possível sacar");
+            }
         }
     }
 }
-
