@@ -33,10 +33,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(11, 11);
+            this.button1.Location = new System.Drawing.Point(226, 130);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(578, 344);
+            this.button1.Size = new System.Drawing.Size(143, 69);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;

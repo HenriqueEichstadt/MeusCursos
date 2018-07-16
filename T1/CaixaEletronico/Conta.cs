@@ -8,41 +8,46 @@ namespace CaixaEletronico
 {
     class Conta
     {
-        public Cliente cliente;
+        //Propriedades da Classe Conta
 
-        public int numero;
+        public Cliente Cliente { get; set; }
 
-        public Cliente titular;
+        public Cliente Titular { get; set; }
 
-        public double saldo;
+        public int Numero { get; set; }
 
-        public int agencia;
+        public double Saldo { get; private set; }
 
+        public int Agencia { get; set; }
+
+        // Métodos da Classe Conta
+
+            //Método para depositar valor
         public void deposita (double valorDepositado)
         {
             if (valorDepositado > 0)
             {
-                this.saldo += valorDepositado;
+                this.Saldo += valorDepositado;
             }
         }
         public bool Sacar (double valorSacado)
         {
-            if (valorSacado > this.saldo || valorSacado < 0)
+            if (valorSacado > this.Saldo || valorSacado < 0)
             {
                 return false;
             }
             else
             {
-                if (this.titular.maiorDeIdade())
+                if (this.Titular.maiorDeIdade())
                 {
-                    this.saldo -= valorSacado;
+                    this.Saldo -= valorSacado;
                     return true;
                 }
                 else
                 {
                     if (valorSacado <= 200)
                     {
-                        this.saldo -= valorSacado;
+                        this.Saldo -= valorSacado;
                         return true;
                     }
                     else

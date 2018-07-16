@@ -8,20 +8,30 @@ namespace CaixaEletronico
 {
     class Cliente
     {
-        public string nome;
+        //Propriedades da Classe Conta
+        public string Nome { get; set; }
 
-        public string rg;
+        public string Rg { get; set; }
 
-        public string endereco;
+        public string Endereco { get; set; }
 
-        public long cpf;
+        public long Cpf { get; set; }
 
-        public int idade;
+        public int Idade { get; set; }
 
         public bool maiorDeIdade()
         {
-            return this.idade >= 18;
+            return this.Idade >= 18;
         }
+
+        // Construtores
+        //Pede para adicionar o nome do cliente
+        public Cliente(string nome)
+        {
+            this.Nome = nome;
+        }
+        //Tornando o parametro nome opcional
+        public Cliente() { }
     }
 
 
