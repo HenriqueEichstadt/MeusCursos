@@ -16,13 +16,24 @@ namespace CaixaEletronico
         {
             InitializeComponent();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             Conta conta = new Conta();
-            Cliente cliente = new Cliente("Jãozinho") { Rg = "12346578", Endereco = "R. Itajaí, 2975 - Vorstadt, Blumenau - SC", Cpf = 123456789-01, Idade = 18 };
+            Cliente cliente = new Cliente("Jãozinho") { Rg = "12346578", Endereco = "R. Itajaí, 2975 - Vorstadt, Blumenau - SC", Cpf = 123456789 - 01, Idade = 18 };
 
             MessageBox.Show(" -> Cliente : " + cliente.Nome + "\n -> RG:   " + cliente.Rg + "\n -> CPF : " + cliente.Cpf + "\n -> End: " + cliente.Endereco + "\n -> Saldo atual : " + conta.Saldo);
+        }
+
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Conta conta = new Conta();
+            Cliente cliente = new Cliente();
+            conta.Titular = cliente;
+            conta.Titular.Nome = "Henrique Eichstädt";
+            textoTitular.Text = conta.Titular.Nome;
+
         }
     }
 }
