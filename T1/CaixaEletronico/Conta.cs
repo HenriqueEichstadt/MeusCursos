@@ -23,7 +23,7 @@ namespace CaixaEletronico
         // Métodos da Classe Conta
 
         //Método para depositar valor
-        public void Deposita(double valorDepositado)
+        public virtual void Deposita(double valorDepositado)
         {
             if (valorDepositado > 0)
             {
