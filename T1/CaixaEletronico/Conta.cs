@@ -16,14 +16,14 @@ namespace CaixaEletronico
 
         public int Numero { get; set; }
 
-        public double Saldo { get; private set; }
+        public double Saldo { get; set; }
 
         public int Agencia { get; set; }
 
         // Métodos da Classe Conta
 
-            //Método para depositar valor
-        public void deposita (double valorDepositado)
+        //Método para depositar valor
+        public void Deposita(double valorDepositado)
         {
             if (valorDepositado > 0)
             {
@@ -61,7 +61,7 @@ namespace CaixaEletronico
         public void Transfere(double valor, Conta destino)
         {
             this.Sacar(valor);
-            destino.deposita(valor);
+            destino.Deposita(valor);
         }
     }
 }
