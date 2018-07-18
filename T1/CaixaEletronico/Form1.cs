@@ -12,44 +12,48 @@ namespace CaixaEletronico
 {
     public partial class Form1 : Form
     {
-        private Conta conta;
+        Conta[] contas;
+        //private Conta conta;
 
         // Método para exibir dados da conta
         private void MostrarConta()
         {
-            textoTitular.Text = this.conta.Titular.Nome;
-            textoSaldo.Text = Convert.ToString(this.conta.Saldo);
-            textoNumero.Text = Convert.ToString(this.conta.Numero);
+            int indiceSelecionado = comboContas.SelectedIndex;
+            textoTitular.Text = this.contas[indiceSelecionado].Titular.Nome;
+            textoSaldo.Text = Convert.ToString(this.contas[indiceSelecionado].Saldo);
+            textoNumero.Text = Convert.ToString(this.contas[indiceSelecionado].Numero);
         }
         public Form1()
-        {            
+        {
             InitializeComponent();
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            Conta conta = new Conta();
-            Cliente cliente = new Cliente("Jãozinho") { Rg = "12346578", Endereco = "R. Itajaí, 2975 - Vorstadt, Blumenau - SC", Cpf = 123456789 - 01, Idade = 18 };
-
-            MessageBox.Show(" -> Cliente : " + cliente.Nome + "\n -> RG:   " + cliente.Rg + "\n -> CPF : " + cliente.Cpf + "\n -> End: " + cliente.Endereco + "\n -> Saldo atual : " + conta.Saldo);
+           
         }
-
-
-
         private void Form1_Load(object sender, EventArgs e)
         {
             // criando nova conta
-            this.conta = new Conta();
-            Cliente cliente = new Cliente();
-            this.conta.Titular = cliente;
-            this.conta.Titular.Nome = "Henrique Eichstädt";
-            this.conta.Deposita(10000);
-            this.conta.Numero = 987654321;
-            this.conta.Titular.Idade = 18;
-            // método para exibir os dados da conta
-            this.MostrarConta();
+            contas = new Conta[2];
+            Cliente c0 = new Cliente();
 
+            contas[0] = new Conta();
+            contas[0].Titular = c0;
+            contas[0].Titular.Nome = "Henrique Eichstädt";
+            contas[0].Saldo = 1500.00;
+            contas[0].Numero = 1;
 
+            Cliente c1 = new Cliente();
+            contas[1] = new Conta();
+            contas[1].Titular = c1;
+            contas[1].Titular.Nome = "João da Silva";
+            contas[1].Saldo = 10000.00;
+            contas[1].Numero = 2;
 
+            foreach (Conta conta in contas)
+            {
+                comboContas.Items.Add(conta.Titular.Nome + "  -  " + conta.Numero);
+            }
         }
 
         private void textoTitular_TextChanged(object sender, EventArgs e)
@@ -72,7 +76,8 @@ namespace CaixaEletronico
             // converte string para double 
             string textoDoValorDoDeposito = textoValor.Text;
             double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
-            this.conta.Deposita(valorDeposito);
+            int indiceSelecionado = comboContas.SelectedIndex;
+            this.contas[indiceSelecionado].Deposita(valorDeposito);
 
             // Inicia o método que mostra as informações da conta
             this.MostrarConta();
@@ -82,7 +87,8 @@ namespace CaixaEletronico
         {
             string textoDoValorSacado = textoValor.Text;
             double valorSacado = Convert.ToDouble(textoDoValorSacado);
-            this.conta.Sacar(valorSacado);
+            int indiceSelecionado = comboContas.SelectedIndex;
+            this.contas[indiceSelecionado].Sacar(valorSacado);
 
             // Inicia o método que mostra as informações da conta
             this.MostrarConta();
@@ -91,6 +97,15 @@ namespace CaixaEletronico
         private void textoValor_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void comboContas_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int indiceSelecionado = comboContas.SelectedIndex;
+            Conta contaSelecionada = contas[indiceSelecionado];
+            textoTitular.Text = contaSelecionada.Titular.Nome;
+            textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
+            textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
         }
     }
 }

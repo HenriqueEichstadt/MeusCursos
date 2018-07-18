@@ -38,6 +38,8 @@
             this.botaoDepositar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.sacarValor = new System.Windows.Forms.Button();
+            this.comboContas = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textoTitular
@@ -128,11 +130,31 @@
             this.sacarValor.UseVisualStyleBackColor = true;
             this.sacarValor.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // comboContas
+            // 
+            this.comboContas.FormattingEnabled = true;
+            this.comboContas.Location = new System.Drawing.Point(126, 66);
+            this.comboContas.Name = "comboContas";
+            this.comboContas.Size = new System.Drawing.Size(356, 21);
+            this.comboContas.TabIndex = 10;
+            this.comboContas.SelectedIndexChanged += new System.EventHandler(this.comboContas_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(126, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(39, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "Cliente";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 366);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.comboContas);
             this.Controls.Add(this.sacarValor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.botaoDepositar);
@@ -164,6 +186,8 @@
         private System.Windows.Forms.Button botaoDepositar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button sacarValor;
+        private System.Windows.Forms.ComboBox comboContas;
+        private System.Windows.Forms.Label label4;
     }
 }
 
