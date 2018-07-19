@@ -16,12 +16,18 @@ namespace CaixaEletronico
         //private Conta conta;
 
         // Método para exibir dados da conta
-        private void MostrarConta()
+        private void MostrarConta(Conta conta)
         {
             int indiceSelecionado = comboContas.SelectedIndex;
             textoTitular.Text = this.contas[indiceSelecionado].Titular.Nome;
             textoSaldo.Text = Convert.ToString(this.contas[indiceSelecionado].Saldo);
             textoNumero.Text = Convert.ToString(this.contas[indiceSelecionado].Numero);
+        }
+
+        private Conta BuscaContaSelecionada()
+        {
+            int indiceSelecionado = comboContas.SelectedIndex;
+            return this.contas[indiceSelecionado];
         }
         public Form1()
         {
@@ -29,30 +35,39 @@ namespace CaixaEletronico
         }
         private void button1_Click(object sender, EventArgs e)
         {
-           
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             // criando nova conta
-            contas = new Conta[2];
+            contas = new Conta[3];
             Cliente c0 = new Cliente();
-
             contas[0] = new Conta();
             contas[0].Titular = c0;
             contas[0].Titular.Nome = "Henrique Eichstädt";
-            contas[0].Saldo = 1500.00;
-            contas[0].Numero = 1;
+            contas[0].Saldo = 20000.00;
+            contas[0].Numero = 0001;
 
             Cliente c1 = new Cliente();
             contas[1] = new Conta();
             contas[1].Titular = c1;
             contas[1].Titular.Nome = "João da Silva";
             contas[1].Saldo = 10000.00;
-            contas[1].Numero = 2;
+            contas[1].Numero = 0002;
+
+            Cliente c2 = new Cliente();
+            contas[2] = new Conta();
+            contas[2].Titular = c2;
+            contas[2].Titular.Nome = "Bernanrdo ";
+            contas[2].Saldo = 15750.00;
+            contas[2].Numero = 0003;
+
+
 
             foreach (Conta conta in contas)
             {
                 comboContas.Items.Add(conta.Titular.Nome + "  -  " + conta.Numero);
+                comboDestinoDaTransferencia.Items.Add(conta.Titular.Nome + "   -   " + conta.Numero);
             }
         }
 
@@ -80,7 +95,9 @@ namespace CaixaEletronico
             this.contas[indiceSelecionado].Deposita(valorDeposito);
 
             // Inicia o método que mostra as informações da conta
-            this.MostrarConta();
+            Conta contaSelecionada = this.contas[indiceSelecionado];
+            contaSelecionada.Deposita(valorDeposito);
+            this.MostrarConta(contaSelecionada);
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -91,7 +108,10 @@ namespace CaixaEletronico
             this.contas[indiceSelecionado].Sacar(valorSacado);
 
             // Inicia o método que mostra as informações da conta
-            this.MostrarConta();
+            Conta contaSelecionada = this.contas[indiceSelecionado];
+            contaSelecionada.Sacar(valorSacado);
+
+            this.MostrarConta(contaSelecionada);
         }
 
         private void textoValor_TextChanged(object sender, EventArgs e)
@@ -106,6 +126,27 @@ namespace CaixaEletronico
             textoTitular.Text = contaSelecionada.Titular.Nome;
             textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
             textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
+        }
+
+        private void botaoTransferir_Click(object sender, EventArgs e)
+        {
+            Conta contaSelecionada = this.BuscaContaSelecionada();
+
+            int indiceDaContaDestino = comboDestinoDaTransferencia.SelectedIndex;
+
+            Conta contaDestino = this.contas[indiceDaContaDestino];
+
+            string textoValorTransfere = textoValor.Text;
+            double valorTransferencia = Convert.ToDouble(textoValorTransfere);
+
+            contaSelecionada.TransferirParaAlguem(contaDestino, valorTransferencia);
+
+            this.MostrarConta(contaSelecionada);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
