@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    class Cliente
+   public class Cliente
     {
         //Propriedades da Classe Conta
         public string Nome { get; set; }

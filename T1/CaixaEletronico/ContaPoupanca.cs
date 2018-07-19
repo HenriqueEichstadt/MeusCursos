@@ -8,14 +8,52 @@ namespace CaixaEletronico
 {
     class ContaPoupanca : Conta
     {
+
         //Método para depositar valor
         public override void Deposita(double valorDepositado)
         {
-            double taxaDeDeposito = 0.1;
             if (valorDepositado > 0)
             {
-                this.Saldo += valorDepositado - taxaDeDeposito;
+                this.Saldo += valorDepositado;
             }
         }
+
+        // Método para Sacar valor
+        public override bool Sacar(double valorSacado)
+        {
+            if (valorSacado > this.Saldo || valorSacado < 0)
+            {
+                return false;
+            }
+            else
+            {
+                if (this.Titular.maiorDeIdade())
+                {
+                    this.Saldo -= valorSacado;
+                    return true;
+                }
+                else
+                {
+                    if (valorSacado <= 200)
+                    {
+                        this.Saldo -= valorSacado;
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        //Método para Transferir valor para outra conta    
+        public override void TransferirParaAlguem(Conta destino, double valor)
+        {
+            this.Sacar(valor);
+            destino.Deposita(valor);
+        }
     }
+
 }
+

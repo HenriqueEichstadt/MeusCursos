@@ -41,26 +41,30 @@ namespace CaixaEletronico
         {
             // criando nova conta
             contas = new Conta[3];
+
             Cliente c0 = new Cliente();
-            contas[0] = new Conta();
+            contas[0] = new ContaPoupanca();
             contas[0].Titular = c0;
             contas[0].Titular.Nome = "Henrique Eichstädt";
-            contas[0].Saldo = 20000.00;
+            contas[0].Deposita(20000.00);
             contas[0].Numero = 0001;
+            contas[0].Titular.Idade = 18;
 
             Cliente c1 = new Cliente();
-            contas[1] = new Conta();
+            contas[1] = new ContaPoupanca();
             contas[1].Titular = c1;
             contas[1].Titular.Nome = "João da Silva";
-            contas[1].Saldo = 10000.00;
+            contas[1].Deposita(10000.00);
             contas[1].Numero = 0002;
+            contas[1].Titular.Idade = 18;
 
             Cliente c2 = new Cliente();
-            contas[2] = new Conta();
+            contas[2] = new ContaPoupanca();
             contas[2].Titular = c2;
             contas[2].Titular.Nome = "Bernanrdo ";
-            contas[2].Saldo = 15750.00;
+            contas[2].Deposita(15000.00);
             contas[2].Numero = 0003;
+            contas[2].Titular.Idade = 18;
 
 
 
