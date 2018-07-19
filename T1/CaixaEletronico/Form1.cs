@@ -152,6 +152,19 @@ namespace CaixaEletronico
         {
 
         }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            GerenciadorDeImposto gerenciador = new GerenciadorDeImposto();
+            ContaPoupanca contaP = new ContaPoupanca();
+            SeguroDeVida seguroV = new SeguroDeVida();
+            ContaInvestimento contaInv = new ContaInvestimento();
+            gerenciador.Adiciona(contaP);
+            gerenciador.Adiciona(seguroV);
+            gerenciador.Adiciona(contaInv);
+            MessageBox.Show("Total: " + gerenciador.Total);
+
+        }
     }
 }
 

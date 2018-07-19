@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace CaixaEletronico
 {
-    public class ContaPoupanca : Conta, ITributavel    
+    public class ContaInvestimento : Conta, ITributavel
     {
         //Método para calcular Tributos
         public double CalculaTributos()
         {
             return this.Saldo * 0.02;
         }
+
+
+        // Métodos da Classe Conta
 
         //Método para depositar valor
         public override void Deposita(double valorDepositado)
@@ -59,6 +62,6 @@ namespace CaixaEletronico
             destino.Deposita(valor);
         }
     }
-
 }
+
 
