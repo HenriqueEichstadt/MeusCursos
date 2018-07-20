@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bennerCaixaEletronicoModelo
+namespace benner.CaixaEletronico.Modelo
 {
     class SaldoInsuficienteException : Exception
     {
-        public SaldoInsuficienteException(string message) : base(message)
-        {
-        }
     }
 }

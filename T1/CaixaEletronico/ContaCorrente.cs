@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using bennerCaixaEletronicoModeloContas;
-using bennerCaixaEletronicoModelo;
+using benner.CaixaEletronico.Modelo.Contas;
+using benner.CaixaEletronico.Modelo;
 
-namespace bennerCaixaEletronicoModeloContas
+namespace benner.CaixaEletronico.Modelo.Contas
 {
     class ContaCorrente : Conta
     {
@@ -17,34 +17,40 @@ namespace bennerCaixaEletronicoModeloContas
             {
                 this.Saldo += valorDepositado;
             }
+            else
+            {
+                throw new ArgumentException();
+            }
         }
 
         // Método para Sacar valor
         public override void Sacar(double valorSacado)
         {
-
-            if (valorSacado > this.Saldo || valorSacado < 0)
+            if (valorSacado < 0)
             {
-                throw new SaldoInsuficienteException("Valor do saque maior que o saldo ou valor negativo");
-                
+                throw new ArgumentException();
+            }
+            if (valorSacado > this.Saldo)
+            {
+                throw new SaldoInsuficienteException();
             }
             else
             {
                 if (this.Titular.maiorDeIdade())
                 {
                     this.Saldo -= valorSacado;
-                    
+
                 }
                 else
                 {
                     if (valorSacado <= 200)
                     {
                         this.Saldo -= valorSacado;
-                        
+
                     }
                     else
                     {
-                        throw new ArgumentException();
+                        throw new MenorDeIdadeException();
                     }
                 }
             }

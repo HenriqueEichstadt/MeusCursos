@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-namespace bennerCaixaEletronicoModeloContas
+using benner.CaixaEletronico.Usuarios;
+namespace benner.CaixaEletronico.Modelo.Contas
 {
     public abstract class Conta
     {
         //Propriedades da Classe Conta
 
-        public bennerCaixaEletronicoUsuarios.Cliente Cliente { get; set; }
+        public Cliente Cliente { get; set; }
 
-        public bennerCaixaEletronicoUsuarios.Cliente Titular { get; set; }
+        public Cliente Titular { get; set; }
 
         public int Numero { get; set; }
 

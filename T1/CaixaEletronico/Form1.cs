@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using bennerCaixaEletronicoModeloContas;
-using bennerCaixaEletronicoUsuarios;
-using bennerCaixaEletronicoModelo;
-using bennerCaixaEletronicoGerenciadores;
+using benner.CaixaEletronico.Modelo.Contas;
+using benner.CaixaEletronico.Usuarios;
+using benner.CaixaEletronico.Modelo;
+using benner.CaixaEletronico.Gerenciadores;
 
-namespace bennerCaixaEletronico
+namespace benner.CaixaEletronico
 {
     public partial class Form1 : Form
     {
@@ -47,15 +47,15 @@ namespace bennerCaixaEletronico
             contas = new Conta[3];
 
             Cliente c0 = new Cliente();
-            contas[0] = new ContaCorrente();
+            contas[0] = new ContaPoupanca();
             contas[0].Titular = c0;
             contas[0].Titular.Nome = "Henrique Eichstädt";
             contas[0].Deposita(20000.00);
             contas[0].Numero = 0001;
-            contas[0].Titular.Idade = 18;
+            contas[0].Titular.Idade = 17;
 
             Cliente c1 = new Cliente();
-            contas[1] = new ContaCorrente();
+            contas[1] = new ContaPoupanca();
             contas[1].Titular = c1;
             contas[1].Titular.Nome = "João da Silva";
             contas[1].Deposita(10000.00);
@@ -63,7 +63,7 @@ namespace bennerCaixaEletronico
             contas[1].Titular.Idade = 18;
 
             Cliente c2 = new Cliente();
-            contas[2] = new ContaCorrente();
+            contas[2] = new ContaPoupanca();
             contas[2].Titular = c2;
             contas[2].Titular.Nome = "Bernanrdo ";
             contas[2].Deposita(15000.00);
@@ -101,12 +101,25 @@ namespace bennerCaixaEletronico
             double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
             // Depositar
             int indiceSelecionado = comboContas.SelectedIndex;
-            this.contas[indiceSelecionado].Deposita(valorDeposito);
+           
 
             // Inicia o método que mostra as informações da conta
             Conta contaSelecionada = this.contas[indiceSelecionado];
             this.MostrarConta(contaSelecionada);
+
+            try
+            {
+                this.contas[indiceSelecionado].Deposita(valorDeposito);
+                MessageBox.Show("Depósito Efetuado Com Sucesso !");
+
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Valor Nulo Para Dépósito, Insira outro valor !");
+            }
+            this.MostrarConta(contaSelecionada);
         }
+      
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -114,25 +127,29 @@ namespace bennerCaixaEletronico
             double valorSacado = Convert.ToDouble(textoDoValorSacado);
             // Sacar
             int indiceSelecionado = comboContas.SelectedIndex;
-            this.contas[indiceSelecionado].Sacar(valorSacado);
+
 
             // Inicia o método que mostra as informações da conta
             Conta contaSelecionada = this.contas[indiceSelecionado];
             this.MostrarConta(contaSelecionada);
-            
+
             // Exceções
             try
             {
                 contaSelecionada.Sacar(valorSacado);
-                MessageBox.Show("Dinheiro Liberado");
+                MessageBox.Show("Saque Efetuado com Sucesso !");
             }
-            catch (SaldoInsuficienteException exception)
+            catch (SaldoInsuficienteException)
             {
-                MessageBox.Show("Valor inválido para saque." + exception.Message);
+                MessageBox.Show("Saldo Insuficiente para saque !");
             }
-            catch (System.ArgumentException exception)
+            catch (ArgumentException)
             {
-                MessageBox.Show("Titular Menor de 18 Anos" + exception.Message);
+                MessageBox.Show("Valor de Saque Inválido !");
+            }
+            catch (MenorDeIdadeException)
+            {
+                MessageBox.Show("Saque restrito a R$: 200,00 para Titular menor de idade !");
             }
             this.MostrarConta(contaSelecionada);
         }

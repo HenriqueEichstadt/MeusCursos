@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace bennerCaixaEletronicoUsuarios
+namespace benner.CaixaEletronico.Usuarios
 {
    public class Cliente
     {

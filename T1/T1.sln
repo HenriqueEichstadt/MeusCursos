@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VotarEleicoes", "VotarEleic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjetoForsEncadeados", "ProjetoForsEncadeados\ProjetoForsEncadeados.csproj", "{C09D8B19-0EF0-454A-8E90-0D9089D5AD9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioSomaDeUmACem", "DesafioSomaDeUmACem\DesafioSomaDeUmACem.csproj", "{179A54C0-47E7-408A-83C0-100F86E4D573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioOperadores", "DesafioOperadores\DesafioOperadores.csproj", "{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,14 @@ Global
 		{C09D8B19-0EF0-454A-8E90-0D9089D5AD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C09D8B19-0EF0-454A-8E90-0D9089D5AD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C09D8B19-0EF0-454A-8E90-0D9089D5AD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{179A54C0-47E7-408A-83C0-100F86E4D573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{179A54C0-47E7-408A-83C0-100F86E4D573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{179A54C0-47E7-408A-83C0-100F86E4D573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{179A54C0-47E7-408A-83C0-100F86E4D573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

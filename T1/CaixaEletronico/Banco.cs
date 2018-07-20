@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using bennerCaixaEletronicoModeloContas;
-using bennerCaixaEletronicoUsuarios;
+using benner.CaixaEletronico.Modelo.Contas;
+using benner.CaixaEletronico.Usuarios;
 
-namespace bennerCaixaEletronicoBancos
+namespace benner.CaixaEletronico.Bancos
 {
     class Banco
     {

@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace benner.CaixaEletronico
+namespace benner.CaixaEletronico.Modelo
+
 {
-    class TotalizadorDeTributos
+    class MenorDeIdadeException : Exception
     {
     }
 }
