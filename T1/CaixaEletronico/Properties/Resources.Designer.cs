@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CaixaEletronico.Properties
+namespace bennerCaixaEletronico.Properties
 {
 
 

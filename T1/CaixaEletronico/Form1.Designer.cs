@@ -1,4 +1,4 @@
-﻿namespace CaixaEletronico
+﻿namespace bennerCaixaEletronico
 {
     partial class Form1
     {

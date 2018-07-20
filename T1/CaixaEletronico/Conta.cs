@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CaixaEletronico
+namespace bennerCaixaEletronicoModeloContas
 {
     public abstract class Conta
     {
         //Propriedades da Classe Conta
 
-        public Cliente Cliente { get; set; }
+        public bennerCaixaEletronicoUsuarios.Cliente Cliente { get; set; }
 
-        public Cliente Titular { get; set; }
+        public bennerCaixaEletronicoUsuarios.Cliente Titular { get; set; }
 
         public int Numero { get; set; }
 
@@ -26,7 +26,7 @@ namespace CaixaEletronico
         public abstract void Deposita(double valorDepositado);
 
         // Método Abstrato Sacar
-        public abstract bool Sacar(double valorSacado);
+        public abstract void Sacar(double valorSacado);
         
         //public void Transfere(double valor, Conta destino)
         public abstract void TransferirParaAlguem(Conta destino, double valor);

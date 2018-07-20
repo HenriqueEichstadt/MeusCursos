@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace bennerCaixaEletronicoModelo
 {
-    interface ITributavel
+    class SaldoInsuficienteException : Exception
     {
-        double CalculaTributos();
+        public SaldoInsuficienteException(string message) : base(message)
+        {
+        }
     }
 }

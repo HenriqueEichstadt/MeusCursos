@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using bennerCaixaEletronicoModeloContas;
+using bennerCaixaEletronicoUsuarios;
+using bennerCaixaEletronicoModelo;
 
-namespace CaixaEletronico
+namespace bennerCaixaEletronicoModeloContas
 {
     public class ContaInvestimento : Conta, ITributavel
     {
@@ -27,29 +30,30 @@ namespace CaixaEletronico
         }
 
         // Método para Sacar valor
-        public override bool Sacar(double valorSacado)
+        public override void Sacar(double valorSacado)
         {
+
             if (valorSacado > this.Saldo || valorSacado < 0)
             {
-                return false;
+                throw new SaldoInsuficienteException("Valor do saque maior que o saldo ou valor negativo");
             }
             else
             {
                 if (this.Titular.maiorDeIdade())
                 {
                     this.Saldo -= valorSacado;
-                    return true;
+
                 }
                 else
                 {
                     if (valorSacado <= 200)
                     {
                         this.Saldo -= valorSacado;
-                        return true;
+
                     }
                     else
                     {
-                        return false;
+                        throw new ArgumentException();
                     }
                 }
             }

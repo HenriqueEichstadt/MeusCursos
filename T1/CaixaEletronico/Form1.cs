@@ -7,8 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using bennerCaixaEletronicoModeloContas;
+using bennerCaixaEletronicoUsuarios;
+using bennerCaixaEletronicoModelo;
+using bennerCaixaEletronicoGerenciadores;
 
-namespace CaixaEletronico
+namespace bennerCaixaEletronico
 {
     public partial class Form1 : Form
     {
@@ -43,7 +47,7 @@ namespace CaixaEletronico
             contas = new Conta[3];
 
             Cliente c0 = new Cliente();
-            contas[0] = new ContaPoupanca();
+            contas[0] = new ContaCorrente();
             contas[0].Titular = c0;
             contas[0].Titular.Nome = "Henrique Eichstädt";
             contas[0].Deposita(20000.00);
@@ -51,7 +55,7 @@ namespace CaixaEletronico
             contas[0].Titular.Idade = 18;
 
             Cliente c1 = new Cliente();
-            contas[1] = new ContaPoupanca();
+            contas[1] = new ContaCorrente();
             contas[1].Titular = c1;
             contas[1].Titular.Nome = "João da Silva";
             contas[1].Deposita(10000.00);
@@ -59,7 +63,7 @@ namespace CaixaEletronico
             contas[1].Titular.Idade = 18;
 
             Cliente c2 = new Cliente();
-            contas[2] = new ContaPoupanca();
+            contas[2] = new ContaCorrente();
             contas[2].Titular = c2;
             contas[2].Titular.Nome = "Bernanrdo ";
             contas[2].Deposita(15000.00);
@@ -95,12 +99,12 @@ namespace CaixaEletronico
             // converte string para double 
             string textoDoValorDoDeposito = textoValor.Text;
             double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
+            // Depositar
             int indiceSelecionado = comboContas.SelectedIndex;
             this.contas[indiceSelecionado].Deposita(valorDeposito);
 
             // Inicia o método que mostra as informações da conta
             Conta contaSelecionada = this.contas[indiceSelecionado];
-            contaSelecionada.Deposita(valorDeposito);
             this.MostrarConta(contaSelecionada);
         }
 
@@ -108,13 +112,28 @@ namespace CaixaEletronico
         {
             string textoDoValorSacado = textoValor.Text;
             double valorSacado = Convert.ToDouble(textoDoValorSacado);
+            // Sacar
             int indiceSelecionado = comboContas.SelectedIndex;
             this.contas[indiceSelecionado].Sacar(valorSacado);
 
             // Inicia o método que mostra as informações da conta
             Conta contaSelecionada = this.contas[indiceSelecionado];
-            contaSelecionada.Sacar(valorSacado);
-
+            this.MostrarConta(contaSelecionada);
+            
+            // Exceções
+            try
+            {
+                contaSelecionada.Sacar(valorSacado);
+                MessageBox.Show("Dinheiro Liberado");
+            }
+            catch (SaldoInsuficienteException exception)
+            {
+                MessageBox.Show("Valor inválido para saque." + exception.Message);
+            }
+            catch (System.ArgumentException exception)
+            {
+                MessageBox.Show("Titular Menor de 18 Anos" + exception.Message);
+            }
             this.MostrarConta(contaSelecionada);
         }
 
