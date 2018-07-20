@@ -15,7 +15,7 @@ namespace benner.CaixaEletronico.Usuarios
 
         public string Endereco { get; set; }
 
-        public long Cpf { get; set; }
+        public string Cpf { get; set; }
 
         public int Idade { get; set; }
 

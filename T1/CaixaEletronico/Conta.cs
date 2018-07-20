@@ -10,7 +10,7 @@ namespace benner.CaixaEletronico.Modelo.Contas
     {
         //Propriedades da Classe Conta
 
-        public Cliente Cliente { get; set; }
+        //public Cliente Cliente { get; set; }
 
         public Cliente Titular { get; set; }
 

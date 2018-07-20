@@ -11,6 +11,8 @@ using benner.CaixaEletronico.Modelo.Contas;
 using benner.CaixaEletronico.Usuarios;
 using benner.CaixaEletronico.Modelo;
 using benner.CaixaEletronico.Gerenciadores;
+using benner.CaixaEletronico;
+using CaixaEletronico;
 
 namespace benner.CaixaEletronico
 {
@@ -18,6 +20,16 @@ namespace benner.CaixaEletronico
     {
         Conta[] contas;
         //private Conta conta;
+        private int quantidadeDeContas;
+
+        // Método para Cadastrar nova conta pelo Formulário
+        public void AdicionaConta(Conta conta)
+        {
+            this.contas[this.quantidadeDeContas] = conta;
+            this.quantidadeDeContas++;
+
+            comboContas.Items.Add(conta.Titular.Nome + "  -  " + conta.Numero);
+        }
 
         // Método para exibir dados da conta
         private void MostrarConta(Conta conta)
@@ -200,6 +212,13 @@ namespace benner.CaixaEletronico
             gerenciador.Adiciona(contaInv);
             MessageBox.Show("Total: " + gerenciador.Total);
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CadastroDeContas cadastro = new CadastroDeContas(this);
+            cadastro.ShowDialog();
+            
         }
     }
 }
