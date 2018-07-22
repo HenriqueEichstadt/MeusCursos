@@ -21,24 +21,50 @@ namespace benner.CaixaEletronico
         Conta[] contas;
         //private Conta conta;
         private int quantidadeDeContas;
-
-        // Método para Cadastrar nova conta pelo Formulário
-        public void AdicionaConta(Conta conta)
+        // Método para adicionar conta
+        public void AdicionaConta(Conta c)
         {
-            this.contas[this.quantidadeDeContas] = conta;
+            if (this.quantidadeDeContas == this.contas.Length)
+            {
+                Conta[] novo = new Conta[this.contas.Length * 2];
+                for (int i = 0; i < this.quantidadeDeContas; i++)
+                {
+                    novo[i] = this.contas[i];
+                }
+                this.contas = novo;
+            }
+            this.contas[this.quantidadeDeContas] = c;
             this.quantidadeDeContas++;
-
-            comboContas.Items.Add(conta.Titular.Nome + "  -  " + conta.Numero);
+            comboContas.Items.Add(c);
+        }
+        // Metodo para remover conta
+        public void RemoveConta(Conta c)
+        {
+            comboContas.Items.Remove(c);
+            int i;
+            for (i = 0; i < this.quantidadeDeContas; i++)
+            {
+                if (this.contas[i] == c)
+                {
+                    break;
+                }
+            }
+            while (i + 1 < this.quantidadeDeContas)
+            {
+                this.contas[i] = this.contas[i + 1];
+                i++;
+            }
         }
 
         // Método para exibir dados da conta
         private void MostrarConta(Conta conta)
         {
-            int indiceSelecionado = comboContas.SelectedIndex;
-            textoTitular.Text = this.contas[indiceSelecionado].Titular.Nome;
-            textoSaldo.Text = Convert.ToString(this.contas[indiceSelecionado].Saldo);
-            textoNumero.Text = Convert.ToString(this.contas[indiceSelecionado].Numero);
+            textoTitular.Text = conta.Titular.Nome;
+            textoSaldo.Text = Convert.ToString(conta.Saldo);
+            textoNumero.Text = Convert.ToString(conta.Numero);
+
         }
+
 
         private Conta BuscaContaSelecionada()
         {
@@ -56,7 +82,7 @@ namespace benner.CaixaEletronico
         private void Form1_Load(object sender, EventArgs e)
         {
             // criando nova conta
-            contas = new Conta[3];
+            contas = new Conta[20];
 
             Cliente c0 = new Cliente();
             contas[0] = new ContaPoupanca();
@@ -82,13 +108,18 @@ namespace benner.CaixaEletronico
             contas[2].Numero = 0003;
             contas[2].Titular.Idade = 18;
 
+            this.quantidadeDeContas = 3;
 
-
-            foreach (Conta conta in contas)
+            foreach (Conta conta in this.contas)
             {
-                comboContas.Items.Add(conta.Titular.Nome + "  -  " + conta.Numero);
-                comboDestinoDaTransferencia.Items.Add(conta.Titular.Nome + "   -   " + conta.Numero);
+                if (conta != null)
+                {
+                    comboContas.Items.Add(conta.Titular.Nome + "  -  " + conta.Numero);
+                    comboDestinoDaTransferencia.Items.Add(conta.Titular.Nome + "   -   " + conta.Numero);
+                }
+
             }
+
         }
 
         private void textoTitular_TextChanged(object sender, EventArgs e)
@@ -113,7 +144,7 @@ namespace benner.CaixaEletronico
             double valorDeposito = Convert.ToDouble(textoDoValorDoDeposito);
             // Depositar
             int indiceSelecionado = comboContas.SelectedIndex;
-           
+
 
             // Inicia o método que mostra as informações da conta
             Conta contaSelecionada = this.contas[indiceSelecionado];
@@ -131,7 +162,7 @@ namespace benner.CaixaEletronico
             }
             this.MostrarConta(contaSelecionada);
         }
-      
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -178,6 +209,10 @@ namespace benner.CaixaEletronico
             textoTitular.Text = contaSelecionada.Titular.Nome;
             textoSaldo.Text = Convert.ToString(contaSelecionada.Saldo);
             textoNumero.Text = Convert.ToString(contaSelecionada.Numero);
+
+            /*string titularSelecionado = comboContas.Text;
+            Conta contaSelecionada = this.BuscaContaSelecionada();
+            this.MostrarConta(contaSelecionada);*/
         }
 
         private void botaoTransferir_Click(object sender, EventArgs e)
@@ -216,10 +251,18 @@ namespace benner.CaixaEletronico
 
         private void button2_Click(object sender, EventArgs e)
         {
-            CadastroDeContas cadastro = new CadastroDeContas(this);
-            cadastro.ShowDialog();
-            
+            CadastroDeContas formularioDeCadastro = new CadastroDeContas(this);
+            formularioDeCadastro.ShowDialog();
+
         }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            Conta conta = BuscaContaSelecionada();
+            this.RemoveConta(conta);
+        }
+
+    
     }
 }
 

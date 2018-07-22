@@ -31,6 +31,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioSomaDeUmACem", "Desa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioOperadores", "DesafioOperadores\DesafioOperadores.csproj", "{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EditorDeTexto", "EditorDeTexto\EditorDeTexto.csproj", "{3F96A3E7-2F52-4F3C-A9C9-FDE6A5A94965}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Console Aplication LeituraDeDadosNoTerminal", "Console Aplication LeituraDeDadosNoTerminal\Console Aplication LeituraDeDadosNoTerminal.csproj", "{F661457D-2EAB-4462-80C0-8590B297319E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +97,14 @@ Global
 		{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6E58A79-42C4-4BA1-B3E5-2F3541B46B30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F96A3E7-2F52-4F3C-A9C9-FDE6A5A94965}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F96A3E7-2F52-4F3C-A9C9-FDE6A5A94965}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F96A3E7-2F52-4F3C-A9C9-FDE6A5A94965}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F96A3E7-2F52-4F3C-A9C9-FDE6A5A94965}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F661457D-2EAB-4462-80C0-8590B297319E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F661457D-2EAB-4462-80C0-8590B297319E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F661457D-2EAB-4462-80C0-8590B297319E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F661457D-2EAB-4462-80C0-8590B297319E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
