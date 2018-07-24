@@ -18,6 +18,7 @@ namespace benner.CaixaEletronico
 {
     public partial class Form1 : Form
     {
+
         Conta[] contas;
         //private Conta conta;
         private int quantidadeDeContas;
@@ -35,12 +36,12 @@ namespace benner.CaixaEletronico
             }
             this.contas[this.quantidadeDeContas] = c;
             this.quantidadeDeContas++;
-            comboContas.Items.Add(c);
+            comboContas.Items.Add(c.Titular.Nome);
         }
         // Metodo para remover conta
         public void RemoveConta(Conta c)
         {
-            comboContas.Items.Remove(c);
+            comboContas.Items.Remove(c.Titular.Nome);
             int i;
             for (i = 0; i < this.quantidadeDeContas; i++)
             {
@@ -114,8 +115,8 @@ namespace benner.CaixaEletronico
             {
                 if (conta != null)
                 {
-                    comboContas.Items.Add(conta.Titular.Nome + "  -  " + conta.Numero);
-                    comboDestinoDaTransferencia.Items.Add(conta.Titular.Nome + "   -   " + conta.Numero);
+                    comboContas.Items.Add(conta.Titular.Nome);
+                    comboDestinoDaTransferencia.Items.Add(conta.Titular.Nome);
                 }
 
             }
