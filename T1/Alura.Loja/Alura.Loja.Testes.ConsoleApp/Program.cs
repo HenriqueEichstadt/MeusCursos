@@ -25,37 +25,36 @@ namespace Alura.Loja.Testes.ConsoleApp
             RecuperarProdutos();
 
             // Atualizar o Produto
-            using (var repo = new LojaContext())
+            using (var repo = new ProdutoDAOEntity())
             {
-                Produto primeiro = repo.Produtos.First();
+                Produto primeiro = repo.Produtos().First();
                 primeiro.Nome = "Cassino Royalle - Editado";
-                repo.Produtos.Update(primeiro);
-                repo.SaveChanges();
+                repo.Atualizar(primeiro);
+
             }
-                RecuperarProdutos();
+            RecuperarProdutos();
 
 
         }
 
         private static void ExcluirProdutos()
         {
-            using (var repo = new LojaContext())
+            using (var repo = new ProdutoDAOEntity())
             {
-                IList<Produto> produtos = repo.Produtos.ToList();
+                IList<Produto> produtos = repo.Produtos();
                 foreach (var item in produtos)
                 {
-                    repo.Produtos.Remove(item);
+                    repo.Remover(item);
                 }
-                repo.SaveChanges();
             }
         }
 
         private static void RecuperarProdutos()
         {
-            using (var repo = new LojaContext())
+            using (var repo = new ProdutoDAOEntity())
             {
-                IList<Produto> produtos = repo.Produtos.ToList();
-                Console.WriteLine ("Foram encontrados {0} produto(s).", produtos.Count);
+                IList<Produto> produtos = repo.Produtos();
+                Console.WriteLine("Foram encontrados {0} produto(s).", produtos.Count);
                 foreach (var item in produtos)
                 {
                     Console.WriteLine(item.Nome);
@@ -82,10 +81,9 @@ namespace Alura.Loja.Testes.ConsoleApp
             p.Categoria = "Livros";
             p.Preco = 49.90;
 
-            using (var contexto = new LojaContext())
+            using (var contexto = new ProdutoDAOEntity())
             {
-                contexto.Produtos.Add(p);
-                contexto.SaveChanges();
+                contexto.Adicionar(p);
             }
         }
     }
