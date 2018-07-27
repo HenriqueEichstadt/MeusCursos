@@ -19,7 +19,7 @@ namespace MultiplosDeTres
 
         private void button1_Click(object sender, EventArgs e)
         {
-           int multiplosDeTres = 0;
+           
 
 
             for (int i = 1; i <= 100; i++)
