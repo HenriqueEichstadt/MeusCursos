@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,49 @@ namespace Alura.Loja.Testes.ConsoleApp
 
 
         static void Main(string[] args)
+        {
+            using (var contexto2 = new LojaContext())
+            {
+                var promocao = contexto2
+                    .Promocoes
+                    .Include(p => p.Produtos)
+                    .ThenInclude(pp => pp.Produto)
+                    .FirstOrDefault();
+
+                Console.WriteLine("\nMotrando os produtos da promoção...");
+                foreach (var item in promocao.Produtos)
+                {
+                    Console.WriteLine(item.Produto);
+                }
+            }
+        }
+
+        private static void IncluirPromocao()
+        {
+            using (var contexto = new LojaContext())
+            {
+                var promocao = new Promocao();
+                promocao.Descricao = "Queima Total 2017";
+                promocao.DataInicio = new DateTime(2017, 1, 1);
+                promocao.DataTermino = new DateTime(2017, 1, 31);
+
+                var produtos = contexto
+              .Produtos
+              .Where(p => p.Categoria == "Bebidas")
+              .ToList();
+
+                foreach (var item in produtos)
+                {
+                    promocao.IncluiProduto(item);
+                }
+
+                contexto.Promocoes.Add(promocao);
+
+                ExibeEntries(contexto.ChangeTracker.Entries());
+            }
+        }
+
+        private static void UmParaUm()
         {
             var fulano = new Cliente();
             fulano.Nome = "Fulaninho de Tal";
@@ -30,7 +74,6 @@ namespace Alura.Loja.Testes.ConsoleApp
                 contexto.Clientes.Add(fulano);
                 contexto.SaveChanges();
             }
-
         }
 
         private static void MuitosParaMuitos()
@@ -65,5 +108,6 @@ namespace Alura.Loja.Testes.ConsoleApp
         }
     }
 }
+
 
 
