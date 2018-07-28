@@ -15,6 +15,39 @@ namespace Alura.Loja.Testes.ConsoleApp
 
         static void Main(string[] args)
         {
+            using (var contexto = new LojaContext())
+            {
+                var cliente = contexto
+           .Clientes
+           .Include(c => c.EnderecoDeEntrega)
+           .FirstOrDefault();
+
+                Console.WriteLine($"Endereço de entrega: {cliente.EnderecoDeEntrega.Logradouro}");
+
+                var produto = contexto
+            .Produtos
+            .Where(p => p.Id == 0)
+            .FirstOrDefault();
+
+                contexto.Entry(produto)
+            .Collection(p => p.Compras)
+            .Query()
+            .Where(c => c.Preco > 10)
+            .Load();
+    
+
+                Console.WriteLine("Mostrando as compras do produto {produto.Nome}");
+                foreach (var item in produto.Compras)
+                {
+                    Console.WriteLine();
+                }
+
+
+            }
+        }
+
+        private static void ExibeProdutosDaPromocao()
+        {
             using (var contexto2 = new LojaContext())
             {
                 var promocao = contexto2
