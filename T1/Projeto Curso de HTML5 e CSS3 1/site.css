@@ -1,19 +1,72 @@
 body {
-	font-family: "Crimson Text", "Times New Roman", serif;
-	background-color: #F2FFFC;
-	font-size: 120%;
+    font-family: "Crimson Text", "Times New Roman", serif;
+    background-color: #F2FFFC;
+    font-size: 120%;
+    line-height: 1.5;
 }
 
-h1, h2 {
-	font-family: "Open Sans Condensed", "Arial", sans-serif;
+h2 {
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
 }
 
-h1 {
-	text-align: center;
-	background-color: #851944;
-	color: #FFF;
+main h1 {
+    font-size: 60px;
+    text-align: center;
+    background-color: #851944;
+    font-family: "Open Sans Condensed", sans-serif;
+    color: #FFF;
+    padding: 25px;
+    margin: 0;
+    border-bottom: 10px solid black;
 }
 
 p {
-	text-align: justify;
+    text-align: justify;
+}
+
+blockquote {
+    background-color: #D9E5E3;
+    padding: 16px;
+    border: 10px solid #C2CCCA;
+    width: 250px;
+    margin: 0;
+    box-sizing: border-box;
+    border: 10px solid #C2CCCA;
+}
+
+aside {
+    background-color: #3C1D3D;
+    color: #F2FFFC;
+    padding: 20px;
+}
+
+footer {
+    background-color: #25CEB2;
+    color: #F2FFFC;
+    padding: 20px;
+}
+
+nav a {
+    color: #F2FFFC;
+}
+
+main a {
+    color: #770E18;
+}
+
+aside {
+    background-color: #3C1D3D;
+    color: #F2FFFC;
+}
+
+aside a {
+    color: inherit;
+    font-family: "Open Sans Condensed", sans-serif;
+}
+
+main div {
+    width: 720px;
+    margin: auto;
+}
+dth: 0;
 }
