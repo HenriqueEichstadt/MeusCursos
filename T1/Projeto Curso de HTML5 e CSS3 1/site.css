@@ -22,6 +22,7 @@ main h1 {
 
 p {
     text-align: justify;
+    margin: 20px 0;
 }
 
 blockquote {
@@ -38,14 +39,14 @@ aside {
     background-color: #3C1D3D;
     color: #F2FFFC;
     padding: 20px;
+    text-align: center;
 }
-
 footer {
     background-color: #25CEB2;
     color: #F2FFFC;
     padding: 20px;
+    text-align: center;
 }
-
 nav a {
     color: #F2FFFC;
 }
@@ -57,6 +58,7 @@ main a {
 aside {
     background-color: #3C1D3D;
     color: #F2FFFC;
+
 }
 
 aside a {
@@ -64,9 +66,15 @@ aside a {
     font-family: "Open Sans Condensed", sans-serif;
 }
 
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+
 main div {
     width: 720px;
     margin: auto;
 }
+
 dth: 0;
 }
