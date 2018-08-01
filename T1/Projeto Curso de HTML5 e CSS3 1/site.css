@@ -45,15 +45,19 @@ aside h1 {
 aside {
     background-color: #3C1D3D;
     color: #F2FFFC;
-    padding: 20px;
     text-align: center;
+    padding: 20px;
+    font-family: "Open Sans Condensed", sans-serif;
+    text-decoration: none;
+
+
 }
 
 footer {
-    background-color: #25CEB2;
+    background-color: whitesmoke;
     color: #F2FFFC;
-    padding: 20px;
     text-align: center;
+    padding: 2px;
 }
 
 nav a {
@@ -61,7 +65,8 @@ nav a {
 }
 
 main a {
-    color: #770E18;
+    color: cadetblue;
+    text-decoration: none;
 }
 
 aside {
@@ -80,13 +85,23 @@ ul {
     text-align: center;
 }
 
+#icones-sociais li {
+    display: inline-block;
+}
+
+ul a {
+    text-decoration: none;
+    font-family: "Open Sans Condensed", sans-serif;
+    text-align: center;
+    list-style-type: none;
+    color: cadetblue;
+    display: inline-block;
+}
+
 main div {
     width: 720px;
     margin: auto;
     padding: 30px 0;
-}
-
-dth: 0;
 }
 
 strong {
