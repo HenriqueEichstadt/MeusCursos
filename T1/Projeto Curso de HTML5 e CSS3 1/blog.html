@@ -13,9 +13,9 @@
 
 <body>
     <main>
-        <h1>Blog</h1>
+        <h1 class="titulo-Pagina">Blog</h1>
 
-        <div>
+        <div class="centralizar-Texto">
             <article>
                 <h2>O essencial de design responsivo</h2>
 
@@ -23,8 +23,10 @@
 
                 <p>Design responsivo tem ganho cada vez mais atenção como técnica de desenvolvimento de páginas web para dispositivos móveis. Mas como começar?</p>
 
-                <a href="#">Leia mais</a>
-                <footer>Tags: <a href="#">design responsivo</a>, <a href="#">mobile</a>, <a href="#">css</a></footer>
+                <div class="leia-Mais">
+                    <a href="#">Leia mais</a>
+                    <footer>Tags: <a href="#">design responsivo</a>, <a href="#">mobile</a>, <a href="#">css</a></footer>
+                </div>
             </article>
 
             <article>
@@ -33,8 +35,10 @@
 
                 <p>Tem se falado cada vez sobre acessibilidade na web. Há diversas técnicas e diretivas a serem seguidas, inclusive da própria W3C. Mas vale a pena investir nisso?</p>
 
+                <div class="leia-Mais">
                 <a href="#">Leia mais</a>
                 <footer>Tags: <a href="#">acessibilidade</a>, <a href="#">boas práticas</a></footer>
+                </div>
             </article>
 
             <article>
@@ -43,13 +47,15 @@
 
                 <p>JavaScript é uma linguagem essencial hoje em dia para criar páginas ricas, interativas e dinâmicas. Porém, há alguns cuidados que devem ser tomados ao colocarmos código JavaScript em nossas páginas.</p>
 
+                <div class="leia-Mais">
                 <a href="#">Leia mais...</a>
                 <footer>Tags: <a href="#">javascript</a>, <a href="#">boas práticas</a></footer>
+                </div>
             </article>
         </div>
     </main>
     <img src="eu.jpg" alt="Foto de João da Silva">
-    <aside>
+    <aside class="navegacao-site">
         <h1>João da Silva</h1>
         <nav>
             <ul>
@@ -61,15 +67,14 @@
             </ul>
 
         </nav>
-        <ul id="icones-sociais">
-            <li><a href="http://github.com/joaodasilva"><img src="github.png" alt="Github"></a></li>
-            <li><a href="http://twitter.com/joaodasilva"><img src="twitter.png" alt="Twitter"></a></li>
-            <li><a href="https://br.linkedin.com/pub/linkedin-joao-da-silva/32/4/508"><img src="linkedin.png" alt="LinkedIn"></a></li>
+        <ul class="icones-sociais">
+            <li><a class="github" href="http://github.com/joaodasilva">Github</a></li>
+            <li><a class="twitter" href="http://twitter.com/joaodasilva">Twitter</a></li>
+            <li><a class="linkedin" href="https://br.linkedin.com/pub/linkedin-joao-da-silva/32/4/508">LinkedIn</a></li>
         </ul>
     </aside>
-    <footer>
+    <footer class="rodape">
         &copy; João da Silva 2014
     </footer>
 </body>
-
 </html>

@@ -5,13 +5,7 @@ body {
     line-height: 1.5;
 }
 
-h2 {
-    font-family: "Open Sans Condensed", "Arial", sans-serif;
-    font-size: 30px;
-
-}
-
-main h1 {
+.titulo-Pagina {
     font-size: 60px;
     text-align: center;
     background-color: #851944;
@@ -20,14 +14,15 @@ main h1 {
     padding: 25px;
     margin: 0;
     border-bottom: 10px solid black;
+    text-transform: uppercase;
 }
 
-p {
+.centralizar-Texto p {
     text-align: justify;
     margin: 20px 0;
 }
 
-blockquote {
+.fiat{
     background-color: #D9E5E3;
     padding: 16px;
     border: 10px solid #C2CCCA;
@@ -35,6 +30,25 @@ blockquote {
     box-sizing: border-box;
     border: 10px solid #C2CCCA;
     margin: 20px 40px;
+    float: right;
+}
+
+.petrobras {
+    background-color: #D9E5E3;
+    padding: 16px;
+    border: 10px solid #C2CCCA;
+    width: 250px;
+    box-sizing: border-box;
+    border: 10px solid #C2CCCA;
+    margin: 20px 40px;
+    float: left;
+}
+
+h2 {
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+    font-size: 30px;
+    clear: both;
+
 }
 
 aside h1 {
@@ -50,10 +64,16 @@ aside {
     font-family: "Open Sans Condensed", sans-serif;
     text-decoration: none;
 
-
 }
 
-footer {
+.rodape {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.leia-Mais {
     background-color: black;
     color: white;
     text-align: center;
@@ -72,22 +92,32 @@ main a {
 .navegacao-site {
     background-color: #3C1D3D;
     color: #F2FFFC;
+    float: right;                         //8 minutos e 36 segundos de video//
 
 }
-
-aside a {
-    color: inherit;
-    font-family: "Open Sans Condensed", sans-serif;
-}
-
 ul {
-    list-style-type: none;
+    list-style-type: none;      
     text-align: center;
 }
 
 .icones-sociais li {
     display: inline-block;
+}
 
+.icones-sociais a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-indent: -9999px;
+    }
+.github {
+    background-image: url(github.png);
+}
+.twitter {
+    background-image: url(twitter.png);
+}
+.linkedin {
+    background-image: url(linkedin.png);
 }
 
 ul a {
@@ -112,6 +142,7 @@ strong {
 em {
     font-style: italic;
 }
+
 article {
     padding-bottom: 30px;
     border-bottom: 1px solid #ccc;
