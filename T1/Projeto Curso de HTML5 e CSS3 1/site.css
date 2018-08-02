@@ -54,10 +54,10 @@ aside {
 }
 
 footer {
-    background-color: whitesmoke;
-    color: #F2FFFC;
+    background-color: black;
+    color: white;
     text-align: center;
-    padding: 2px;
+    padding: 15px;
 }
 
 nav a {
@@ -69,7 +69,7 @@ main a {
     text-decoration: none;
 }
 
-aside {
+.navegacao-site {
     background-color: #3C1D3D;
     color: #F2FFFC;
 
@@ -85,8 +85,9 @@ ul {
     text-align: center;
 }
 
-#icones-sociais li {
+.icones-sociais li {
     display: inline-block;
+
 }
 
 ul a {
@@ -110,4 +111,9 @@ strong {
 
 em {
     font-style: italic;
+}
+article {
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 20px;
 }
