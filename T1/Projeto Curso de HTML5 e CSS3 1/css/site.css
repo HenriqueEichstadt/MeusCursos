@@ -1,0 +1,147 @@
+body {
+    font-family: "Crimson Text", "Times New Roman", serif;
+    background-color: #F2FFFC;
+    font-size: 120%;
+    line-height: 1.5;
+}
+
+main {
+    float: left;
+    width: 85%;
+}
+
+.titulo-Pagina {
+    font-size: 60px;
+    text-align: center;
+    background-color: #851944;
+    font-family: "Open Sans Condensed", sans-serif;
+    color: #FFF;
+    padding: 25px;
+    margin: 0;
+    border-bottom: 10px solid black;
+    text-transform: uppercase;
+}
+
+.centralizar-Texto p {
+    text-align: justify;
+    margin: 20px 0;
+}
+
+.centralizar-Texto {
+    margin: 0 auto;
+    width: 840px;
+    padding: 40px 0;
+    padding-bottom: 80px;
+}
+
+main div {
+    width: 720px;
+    margin: auto;
+    padding: 30px 0;
+}
+
+main a {
+    color: cadetblue;
+    text-decoration: none;
+}
+
+h2 {
+    font-family: "Open Sans Condensed", "Arial", sans-serif;
+    font-size: 30px;
+    clear: both;
+}
+
+aside h1 {
+    font-size: 30px;
+    margin-bottom: 25px;
+}
+
+.rodape {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 2px;
+    clear: both;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.navegacao-site {
+    background-color: #3C1D3D;
+    color: #F2FFFC;
+    text-align: center;
+    padding: 20px;
+    font-family: "Open Sans Condensed", sans-serif;
+    text-decoration: none;
+    box-sizing: border-box;
+    clear: right;
+    width: 15%;
+    position: relative;
+    top: 310px;
+}
+
+.minha-foto {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+}
+
+.minha-foto,
+.navegacao-site {
+
+    float: right;
+    box-sizing: border-box;
+    border-left: 10px solid black;
+    border-bottom: 10px solid black;
+}
+
+nav a {
+    color: #F2FFFC;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+ul a {
+    text-decoration: none;
+    font-family: "Open Sans Condensed", sans-serif;
+    text-align: center;
+    list-style-type: none;
+    color: cadetblue;
+    display: inline-block;
+}
+
+.icones-sociais li {
+    display: inline-block;
+}
+
+.icones-sociais a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-indent: -9999px;
+}
+
+.github {
+    background-image: url(../img/github.png);
+}
+
+.twitter {
+    background-image: url(../img/twitter.png);
+}
+
+.linkedin {
+    background-image: url(../img/linkedin.png);
+}
+
+strong {
+    font-weight: bold;
+}
+
+em {
+    font-style: italic;
+}

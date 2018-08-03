@@ -1,0 +1,27 @@
+.fiat {
+    background-color: #D9E5E3;
+    padding: 16px;
+    border: 10px solid #C2CCCA;
+    width: 250px;
+    box-sizing: border-box;
+    border: 10px solid #C2CCCA;
+    margin: 20px 40px;
+    float: right;
+}
+
+.citacao-fiat-e-petrobras {
+    font-style: italic;
+    float: right;
+}
+
+.petrobras {
+    background-color: #D9E5E3;
+    padding: 16px;
+    border: 10px solid #C2CCCA;
+    width: 250px;
+    box-sizing: border-box;
+    border: 10px solid #C2CCCA;
+    margin: 20px 40px;
+    float: left;
+}
+
