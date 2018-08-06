@@ -18,5 +18,31 @@ namespace CaelumEstoque.Controllers
             ViewBag.Produtos = produtos;
             return View();
         }
+
+        public ActionResult Form()
+        {
+            CategoriasDAO categoriasDAO = new CategoriasDAO();
+            IList<CategoriaDoProduto> categorias = categoriasDAO.Lista();
+            ViewBag.Categorias = categorias;
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Adiciona(Produto produto)
+        {
+            if (ModelState.IsValid)
+            { 
+
+            ProdutosDAO dao = new ProdutosDAO();
+            dao.Adiciona(produto);
+
+            return RedirectToAction("Index" , "Produto");
+            }
+            else
+            {
+                CategoriasDAO categoriasDAO = new CategoriasDAO();
+                ViewBag.Categorias = categoriasDAO.Lista();
+                return View("Form");
+            }
+        }
     }
 }
