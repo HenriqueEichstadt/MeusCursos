@@ -9,10 +9,21 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    <link rel="stylesheet" href="~/Content/Css/bootstrap.css" />
+    <link rel="stylesheet" href="~/Content/Css/Site.css" />
 </head>
 <body>
-    <div> 
-        <h1>Página Inicial da aplicação</h1>
+    <div class="container">
+        <div class="header">
+            <ul class="nav nav-pills pull-right">
+                <li>@Html.ActionLink("Produtos", "Index", "Produto")</li>
+                <li>@Html.ActionLink("Categorias", "Index", "Categorias")</li>
+            </ul>
+            <h3 class="text-muted">Caelum Estoque</h3>
+        </div>
+        <div id="conteudo">
+            <h1>Página Inicial da aplicação</h1>
+        </div>
     </div>
 </body>
 </html>
