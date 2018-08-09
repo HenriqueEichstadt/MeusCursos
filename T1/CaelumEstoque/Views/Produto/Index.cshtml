@@ -34,9 +34,8 @@
     function decrementa(produtoId) {
         var url = "@Url.Action("DecrementaQtd", "Produto")";
         $.post(url, { id: produtoId }, atualiza);
-    } 
+    }
     function atualiza(resposta) {
         $("#quantidade" + resposta.Id).html(resposta.Quantidade);
     }
-
 </script>
