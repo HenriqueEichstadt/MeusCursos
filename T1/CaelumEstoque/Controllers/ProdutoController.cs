@@ -4,14 +4,16 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using CaelumEstoque.DAO;
+using CaelumEstoque.Filtros;
 using CaelumEstoque.Models;
 
 namespace CaelumEstoque.Controllers
 {
+    [AutorizacaoFilter] //Permite acesso apenas a quem estiver logado
     public class ProdutoController : Controller
     {
         // GET: Produto
-        [Route("produtos", Name = "ListaProdutos")]
+        [Route("produtos", Name = "ListaProdutos")] 
         public ActionResult Index()
         {
             ProdutosDAO dao = new ProdutosDAO();
@@ -27,6 +29,7 @@ namespace CaelumEstoque.Controllers
             return View();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Adiciona(Produto produto)
         {
             int idDaInformatica = 1;
