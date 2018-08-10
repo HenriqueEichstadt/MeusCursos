@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CursoDesignPatterns
+namespace CursoDesignPatterns.Strategy
 {
-    class Program
+    public interface Investimento
     {
-        static void Main(string[] args)
-        {
-        }
-    }
+        double Calcula(Conta conta);
+     }
 }
