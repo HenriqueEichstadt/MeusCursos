@@ -6,16 +6,9 @@ using System.Threading.Tasks;
 
 namespace CursoDesignPatterns.Muitos_Descontos_e_o_Chain_of_Responsability.Exercicio_Servidor_Conta_Bancária
 {
-    public class Requisicao
+    public interface IResposta
     {
-       
-        public Formato Formato { get; private set; }
-
-        public Requisicao(Formato formato)
-        {
-            Formato = formato;
-        }
-       
+        void Responde(Requisicao req, Conta conta);
+        IResposta OutraResposta { get; set; }
     }
-
 }
