@@ -54,13 +54,14 @@
     <Compile Include="Chain of Responsability\Exercicio Servidor Conta Bancária\RespostaEmPorcento.cs" />
     <Compile Include="Chain of Responsability\Exercicio Servidor Conta Bancária\RespostaEmXml.cs" />
     <Compile Include="Chain of Responsability\SemDesconto.cs" />
+    <Compile Include="Decorator\Imposto.cs" />
     <Compile Include="Strategy\Arrojado.cs" />
     <Compile Include="Strategy\CalculadorDeDescontos.cs" />
     <Compile Include="Strategy\CalculadorDeImpostos.cs" />
     <Compile Include="Strategy\Conservador.cs" />
     <Compile Include="Strategy\ICCC.cs" />
     <Compile Include="Strategy\ICMS.cs" />
-    <Compile Include="Strategy\Imposto.cs" />
+    <Compile Include="Strategy\IImposto.cs" />
     <Compile Include="Strategy\Investimento.cs" />
     <Compile Include="Strategy\ISS.cs" />
     <Compile Include="Strategy\Item.cs" />

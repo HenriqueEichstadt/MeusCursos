@@ -1,4 +1,5 @@
-﻿using CursoDesignPatterns.Muitos_Descontos_e_o_Chain_of_Responsability;
+﻿using CursoDesignPatterns.Decorator;
+using CursoDesignPatterns.Muitos_Descontos_e_o_Chain_of_Responsability;
 using CursoDesignPatterns.Strategy;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,17 @@ namespace CursoDesignPatterns
     {
         static void Main(string[] args)
         {
-            IDesconto d1 = new DescontoPorCincoItens();
+            Imposto iss = new ISS(new ICMS());
+            Orcamento orcamento = new Orcamento(500);
+
+            double valor = iss.Calcula(orcamento);
+
+            Console.WriteLine(valor);
+            Console.ReadKey();
+
+
+
+           /* IDesconto d1 = new DescontoPorCincoItens();
             IDesconto d2 = new DescontoPorMaisDeQuinhentosReais();
             IDesconto d3 = new DescontoPorVendaCasada();
             IDesconto d4 = new SemDesconto();
@@ -25,7 +36,7 @@ namespace CursoDesignPatterns
 
             double desconto = d1.Desconta(orcamento);
             Console.WriteLine(desconto);
-            Console.ReadKey();
+            Console.ReadKey();*/
 
             /*CalculadorDeDescontos calculador = new CalculadorDeDescontos();
 
