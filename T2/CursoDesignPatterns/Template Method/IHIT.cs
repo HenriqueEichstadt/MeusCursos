@@ -7,30 +7,21 @@ using System.Threading.Tasks;
 
 namespace CursoDesignPatterns.Template_Method
 {
-    public class IKCV : TemplateDeImpostoCondicional
+    class IHIT : TemplateDeImpostoCondicional
     {
         public override bool DeveUsarMaximaTaxacao(Orcamento orcamento)
         {
-            IList<String> ItensNomeIgual = new List<String>();
-
-            foreach (Item item in orcamento.Itens)
-            {
-                if (ItensNomeIgual.Contains(item.Nome))
-                    return true;
-                else
-                    ItensNomeIgual.Add(item.Nome);
-            }
-            return false;
+            return orcamento.Valor > 500 && temItemMaiorQueCemReaisNo(orcamento);
         }
 
         public override double MaximaTaxacao(Orcamento orcamento)
         {
-            return orcamento.Valor * 0.13 + 100;
+            return orcamento.Valor * 0.10;
         }
 
         public override double MinimaTaxacao(Orcamento orcamento)
         {
-            return orcamento.Valor * (0.01 * orcamento.Itens.Count);
+            return orcamento.Valor * 0.06;
         }
         private bool temItemMaiorQueCemReaisNo(Orcamento orcamento)
         {

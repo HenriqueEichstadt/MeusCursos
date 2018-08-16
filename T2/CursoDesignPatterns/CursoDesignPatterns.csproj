@@ -42,23 +42,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Muitos Descontos e o Chain of Responsability\DescontoPorCincoItens.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\DescontoPorMaisDeQuinhentosReais.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\Desconto.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\DescontoPorVendaCasada.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\Exercicio Servidor Conta Bancária\Conta.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\Exercicio Servidor Conta Bancária\Formato.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\Exercicio Servidor Conta Bancária\IResposta.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\Exercicio Servidor Conta Bancária\Requisicao.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\Exercicio Servidor Conta Bancária\RespostaEmCsv.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\Exercicio Servidor Conta Bancária\RespostaEmPorcento.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\Exercicio Servidor Conta Bancária\RespostaEmXml.cs" />
-    <Compile Include="Muitos Descontos e o Chain of Responsability\SemDesconto.cs" />
+    <Compile Include="Chain of Responsability\DescontoPorCincoItens.cs" />
+    <Compile Include="Chain of Responsability\DescontoPorMaisDeQuinhentosReais.cs" />
+    <Compile Include="Chain of Responsability\Desconto.cs" />
+    <Compile Include="Chain of Responsability\DescontoPorVendaCasada.cs" />
+    <Compile Include="Conta.cs" />
+    <Compile Include="Chain of Responsability\Exercicio Servidor Conta Bancária\Formato.cs" />
+    <Compile Include="Chain of Responsability\Exercicio Servidor Conta Bancária\IResposta.cs" />
+    <Compile Include="Chain of Responsability\Exercicio Servidor Conta Bancária\Requisicao.cs" />
+    <Compile Include="Chain of Responsability\Exercicio Servidor Conta Bancária\RespostaEmCsv.cs" />
+    <Compile Include="Chain of Responsability\Exercicio Servidor Conta Bancária\RespostaEmPorcento.cs" />
+    <Compile Include="Chain of Responsability\Exercicio Servidor Conta Bancária\RespostaEmXml.cs" />
+    <Compile Include="Chain of Responsability\SemDesconto.cs" />
     <Compile Include="Strategy\Arrojado.cs" />
     <Compile Include="Strategy\CalculadorDeDescontos.cs" />
     <Compile Include="Strategy\CalculadorDeImpostos.cs" />
     <Compile Include="Strategy\Conservador.cs" />
-    <Compile Include="Strategy\Conta.cs" />
     <Compile Include="Strategy\ICCC.cs" />
     <Compile Include="Strategy\ICMS.cs" />
     <Compile Include="Strategy\Imposto.cs" />
@@ -70,8 +69,13 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategy\RealizadorDeInvestimentos.cs" />
+    <Compile Include="Template Method\Exercicio relatórios\Relatorio.cs" />
+    <Compile Include="Template Method\Exercicio relatórios\RelatorioComplexo.cs" />
+    <Compile Include="Template Method\Exercicio relatórios\RelatorioSimples.cs" />
     <Compile Include="Template Method\ICPP.cs" />
+    <Compile Include="Template Method\IHIT.cs" />
     <Compile Include="Template Method\IKCV.cs" />
+    <Compile Include="Template Method\TemplateDeImpostoCondicional.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
