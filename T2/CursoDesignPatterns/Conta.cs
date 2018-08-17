@@ -14,6 +14,9 @@ namespace CursoDesignPatterns.Muitos_Descontos_e_o_Chain_of_Responsability.Exerc
         public string Numero { get; internal set; }
         public string Agencia { get; internal set; }
 
+        public double Valor { get; set;}
+        public DateTime DataAbertura { get; internal set; }
+
         public Conta(String titular, double saldo)
         {
             this.Titular = titular;

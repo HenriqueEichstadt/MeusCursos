@@ -1,4 +1,5 @@
-﻿using CursoDesignPatterns.Strategy;
+﻿using CursoDesignPatterns.Decorator;
+using CursoDesignPatterns.Strategy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,9 @@ namespace CursoDesignPatterns.Template_Method
 {
     public class IKCV : TemplateDeImpostoCondicional
     {
+        public IKCV() : base() { }
+        public IKCV(Imposto novoImposto) : base (novoImposto) { }
+
         public override bool DeveUsarMaximaTaxacao(Orcamento orcamento)
         {
             IList<String> ItensNomeIgual = new List<String>();

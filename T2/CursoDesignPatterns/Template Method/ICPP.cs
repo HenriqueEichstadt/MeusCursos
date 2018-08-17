@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoDesignPatterns.Decorator;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,9 @@ namespace CursoDesignPatterns.Template_Method
 {
     public class ICPP : TemplateDeImpostoCondicional
     {
+        public ICPP() : base() { }
+        public ICPP(Imposto outroImposto) : base(outroImposto) { }
+
         public override bool DeveUsarMaximaTaxacao(Orcamento orcamento)
         {
             return orcamento.Valor >= 500;
