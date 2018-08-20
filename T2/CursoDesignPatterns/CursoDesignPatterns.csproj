@@ -42,6 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builder\ItemDaNotaBuilder.cs" />
+    <Compile Include="Builder\NotaFiscalBuilder.cs" />
+    <Compile Include="Builder\ItemDaNota.cs" />
+    <Compile Include="Builder\NotaFiscal.cs" />
     <Compile Include="Chain of Responsability\DescontoPorCincoItens.cs" />
     <Compile Include="Chain of Responsability\DescontoPorMaisDeQuinhentosReais.cs" />
     <Compile Include="Chain of Responsability\Desconto.cs" />
@@ -61,6 +65,19 @@
     <Compile Include="Decorator\Imposto.cs" />
     <Compile Include="Decorator\ImpostoMuitoAlto.cs" />
     <Compile Include="Decorator\TesteDeImpostos.cs" />
+    <Compile Include="Observer\AcaoAposGerarNota.cs" />
+    <Compile Include="Observer\EnviadorDeEmail.cs" />
+    <Compile Include="Observer\EnviadorDeSms.cs" />
+    <Compile Include="Observer\Multiplicador.cs" />
+    <Compile Include="Observer\NotaFiscalDAO.cs" />
+    <Compile Include="State\Aprovado.cs" />
+    <Compile Include="State\EmAprovacao.cs" />
+    <Compile Include="State\EstadoDeUmOrcamento.cs" />
+    <Compile Include="State\Exercicio Conta\EstadoDaConta.cs" />
+    <Compile Include="State\Exercicio Conta\Negativo.cs" />
+    <Compile Include="State\Exercicio Conta\Positivo.cs" />
+    <Compile Include="State\Finalizado.cs" />
+    <Compile Include="State\Reprovado.cs" />
     <Compile Include="Strategy\Arrojado.cs" />
     <Compile Include="Strategy\CalculadorDeDescontos.cs" />
     <Compile Include="Strategy\CalculadorDeImpostos.cs" />
@@ -87,5 +104,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
