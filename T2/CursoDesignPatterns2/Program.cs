@@ -1,6 +1,7 @@
 ﻿using CursoDesignPatterns2.Capitulo1;
 using CursoDesignPatterns2.Capitulo2;
 using CursoDesignPatterns2.Capitulo3___Memento;
+using CursoDesignPatterns2.Capitulo4___Interpreter;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,6 +16,17 @@ namespace CursoDesignPatterns2
     {
         static void Main(string[] args)
         {
+            // ( 1 + 100 ) + 10 + ( 20 - 10 )
+
+            IExpressao esquerda = new Soma(new Soma(new Numero(1), new Numero(100)), new Numero(10));
+            IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
+
+            IExpressao soma =  new Soma(esquerda, direita);
+
+            Console.WriteLine(soma.Avalia());
+
+
+            /*
             Historico historico = new Historico();
 
 
@@ -32,6 +44,7 @@ namespace CursoDesignPatterns2
             Console.WriteLine("Tipo do contrato   " + c.Tipo);
 
             Console.WriteLine("histórico do contrato   " + historico.Pega(2).Contrato.Tipo);
+            */
 
             // Aula 2
             /*

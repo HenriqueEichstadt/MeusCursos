@@ -57,6 +57,13 @@
     <Compile Include="Capitulo3 - Memento\Estado.cs" />
     <Compile Include="Capitulo3 - Memento\Historico.cs" />
     <Compile Include="Capitulo3 - Memento\TipoContrato.cs" />
+    <Compile Include="Capitulo4 - Interpreter\Divisao.cs" />
+    <Compile Include="Capitulo4 - Interpreter\IExpressao.cs" />
+    <Compile Include="Capitulo4 - Interpreter\Multiplicacao.cs" />
+    <Compile Include="Capitulo4 - Interpreter\Numero.cs" />
+    <Compile Include="Capitulo4 - Interpreter\RaizQuadrada.cs" />
+    <Compile Include="Capitulo4 - Interpreter\Soma.cs" />
+    <Compile Include="Capitulo4 - Interpreter\Subtracao.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
