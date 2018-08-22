@@ -66,6 +66,13 @@
     <Compile Include="Capitulo4 - Interpreter\Subtracao.cs" />
     <Compile Include="Capitulo5 - Visitor\ImpressoraVisitor.cs" />
     <Compile Include="Capitulo5 - Visitor\IVisitor.cs" />
+    <Compile Include="Capitulo5 - Visitor\PreFixaSinalVisitor.cs" />
+    <Compile Include="Capitulo6 - Bridges\EnviaPorEmail.cs" />
+    <Compile Include="Capitulo6 - Bridges\EnviaPorSms.cs" />
+    <Compile Include="Capitulo6 - Bridges\IEnviador.cs" />
+    <Compile Include="Capitulo6 - Bridges\IMensagem.cs" />
+    <Compile Include="Capitulo6 - Bridges\MensagemCliente.cs" />
+    <Compile Include="Capitulo6 - Bridges\MensagemAdministrativa.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

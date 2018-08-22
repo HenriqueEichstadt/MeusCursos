@@ -18,5 +18,7 @@ namespace CursoDesignPatterns2.Capitulo5___Visitor
         void ImprimeRaizQuadrada(RaizQuadrada raizQuadrada);
 
         void ImprimeNumero(Numero numero);
+
+        void ImprimeMultiplicacao(Multiplicacao multiplicacao);
     }
 }

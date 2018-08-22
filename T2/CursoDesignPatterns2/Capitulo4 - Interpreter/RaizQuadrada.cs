@@ -24,5 +24,10 @@ namespace CursoDesignPatterns2.Capitulo4___Interpreter
         {
             impressora.ImprimeRaizQuadrada(this);
         }
+
+        public void Aceita(IVisitor impressora)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

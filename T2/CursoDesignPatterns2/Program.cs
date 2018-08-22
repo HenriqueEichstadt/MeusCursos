@@ -3,6 +3,7 @@ using CursoDesignPatterns2.Capitulo2;
 using CursoDesignPatterns2.Capitulo3___Memento;
 using CursoDesignPatterns2.Capitulo4___Interpreter;
 using CursoDesignPatterns2.Capitulo5___Visitor;
+using CursoDesignPatterns2.Capitulo6___Bridges;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,16 +18,25 @@ namespace CursoDesignPatterns2
     {
         static void Main(string[] args)
         {
+            IMensagem mensagem = new MensagemAdministrativa("Henrique");
+            IEnviador enviador = new EnviaPorEmail();
+            mensagem.Enviador = enviador;
+            mensagem.Envia();
+
+
+
+            /*  Aula 5
             // ( 1 + 100 ) + 10 + ( 20 - 10 )
 
             IExpressao esquerda = new Soma(new Soma(new Numero(1), new Numero(100)), new Numero(10));
             IExpressao direita = new Subtracao(new Numero(20), new Numero(10));
 
             IExpressao soma = new Soma(esquerda, direita);
-
+            
             Console.WriteLine(soma.Avalia());
             ImpressoraVisitor impressora = new ImpressoraVisitor();
             soma.Aceita(impressora);
+            */
 
             /*
             // ( 1 + 100 ) + 10 + ( 20 - 10 )
