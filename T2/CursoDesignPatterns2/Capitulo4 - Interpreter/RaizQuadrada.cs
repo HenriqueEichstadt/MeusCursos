@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CursoDesignPatterns2.Capitulo5___Visitor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,6 +19,10 @@ namespace CursoDesignPatterns2.Capitulo4___Interpreter
         public int Avalia()
         {
             return (int)Math.Sqrt(expressao.Avalia());
+        }
+        public void Aceita(ImpressoraVisitor impressora)
+        {
+            impressora.ImprimeRaizQuadrada(this);
         }
     }
 }

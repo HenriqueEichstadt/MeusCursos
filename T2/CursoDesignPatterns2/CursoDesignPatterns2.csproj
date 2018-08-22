@@ -64,6 +64,8 @@
     <Compile Include="Capitulo4 - Interpreter\RaizQuadrada.cs" />
     <Compile Include="Capitulo4 - Interpreter\Soma.cs" />
     <Compile Include="Capitulo4 - Interpreter\Subtracao.cs" />
+    <Compile Include="Capitulo5 - Visitor\ImpressoraVisitor.cs" />
+    <Compile Include="Capitulo5 - Visitor\IVisitor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
