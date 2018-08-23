@@ -4,6 +4,7 @@ using CursoDesignPatterns2.Capitulo3___Memento;
 using CursoDesignPatterns2.Capitulo4___Interpreter;
 using CursoDesignPatterns2.Capitulo5___Visitor;
 using CursoDesignPatterns2.Capitulo6___Bridges;
+using CursoDesignPatterns2.Capitulo7___Command;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,12 +19,23 @@ namespace CursoDesignPatterns2
     {
         static void Main(string[] args)
         {
+            FIlaDeTrabalho fila = new FIlaDeTrabalho();
+            Pedido pedido1 = new Pedido("João", 100);
+            Pedido pedido2 = new Pedido("João", 200);
+            fila.Adiciona(new PagaPedido(pedido1));
+            fila.Adiciona(new PagaPedido(pedido2));
+
+            fila.Adiciona(new FinalizaPedido(pedido1));
+
+            fila.Processa();
+
+
+            /*   Aula 6
             IMensagem mensagem = new MensagemAdministrativa("Henrique");
             IEnviador enviador = new EnviaPorEmail();
             mensagem.Enviador = enviador;
             mensagem.Envia();
-
-
+            */
 
             /*  Aula 5
             // ( 1 + 100 ) + 10 + ( 20 - 10 )

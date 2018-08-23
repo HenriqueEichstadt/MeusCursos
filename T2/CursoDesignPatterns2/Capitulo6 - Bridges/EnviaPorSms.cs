@@ -12,6 +12,6 @@ namespace CursoDesignPatterns2.Capitulo6___Bridges
         {
             Console.WriteLine("Enviano a mensagem por SMS");
             Console.WriteLine(mensagem.Formata());
-                    }
+        }
     }
 }

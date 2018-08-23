@@ -73,6 +73,12 @@
     <Compile Include="Capitulo6 - Bridges\IMensagem.cs" />
     <Compile Include="Capitulo6 - Bridges\MensagemCliente.cs" />
     <Compile Include="Capitulo6 - Bridges\MensagemAdministrativa.cs" />
+    <Compile Include="Capitulo7 - Command\FIlaDeTrabalho.cs" />
+    <Compile Include="Capitulo7 - Command\FinalizaPedido.cs" />
+    <Compile Include="Capitulo7 - Command\IComando.cs" />
+    <Compile Include="Capitulo7 - Command\PagaPedido.cs" />
+    <Compile Include="Capitulo7 - Command\Pedido.cs" />
+    <Compile Include="Capitulo7 - Command\Status.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
