@@ -79,6 +79,12 @@
     <Compile Include="Capitulo7 - Command\PagaPedido.cs" />
     <Compile Include="Capitulo7 - Command\Pedido.cs" />
     <Compile Include="Capitulo7 - Command\Status.cs" />
+    <Compile Include="Capitulo8 - Adapter\Cliente.cs" />
+    <Compile Include="Capitulo8 - Adapter\GeradorDeXml.cs" />
+    <Compile Include="Capitulo9 - Façades e Singletons\EmpresaFacade.cs" />
+    <Compile Include="Capitulo9 - Façades e Singletons\EmpresaFacadeSingleton.cs" />
+    <Compile Include="Capitulo9 - Façades e Singletons\Servico.cs" />
+    <Compile Include="Capitulo9 - Façades e Singletons\ServicoSingleton.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

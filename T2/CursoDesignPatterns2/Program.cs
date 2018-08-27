@@ -5,13 +5,17 @@ using CursoDesignPatterns2.Capitulo4___Interpreter;
 using CursoDesignPatterns2.Capitulo5___Visitor;
 using CursoDesignPatterns2.Capitulo6___Bridges;
 using CursoDesignPatterns2.Capitulo7___Command;
+using CursoDesignPatterns2.Capitulo8___Adapter;
+using CursoDesignPatterns2.Capitulo9___Façades_e_Singletons;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CursoDesignPatterns2
 {
@@ -19,6 +23,27 @@ namespace CursoDesignPatterns2
     {
         static void Main(string[] args)
         {
+            String cpf = "1234";
+
+            EmpresaFacade facade = new EmpresaFacadeSingleton().Instancia;
+            Cliente cliente = facade.BuscaCliente(cpf);
+
+            var fatura =  facade.CriaFatura(cliente, 5000);
+            facade.GeraCobranca(tipo.Boleto, fatura);
+            
+            /*   Aula 8
+            Cliente cliente = new Cliente();
+
+            cliente.Nome = "Henrique";
+            cliente.Endereco = "Rua 7 de Setembro";
+            cliente.DataDeNascimento = DateTime.Now;
+
+            String xml = new GeradorDeXml().GeraXml(cliente);
+
+            Console.WriteLine(xml);
+            */
+
+            /*   Aula 7
             FIlaDeTrabalho fila = new FIlaDeTrabalho();
             Pedido pedido1 = new Pedido("João", 100);
             Pedido pedido2 = new Pedido("João", 200);
@@ -28,7 +53,7 @@ namespace CursoDesignPatterns2
             fila.Adiciona(new FinalizaPedido(pedido1));
 
             fila.Processa();
-
+            */
 
             /*   Aula 6
             IMensagem mensagem = new MensagemAdministrativa("Henrique");
@@ -80,12 +105,12 @@ namespace CursoDesignPatterns2
 
             Console.WriteLine("histórico do contrato   " + historico.Pega(2).Contrato.Tipo);
             */
-
-            // Aula 2
+// Aula 2
             /*
             NotasMusicais notas = new NotasMusicais();
             IList<INota> musica = new List<INota>()
             {
+            
             notas.Pega("do"),
             notas.Pega("re"),
             notas.Pega("mi"),
