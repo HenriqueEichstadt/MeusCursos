@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Aula2 - Acoplamento e estabilidade\IAcaoAposGerarNota.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\CalculadoraDeSalario.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\Cargo.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\Dba.cs" />
@@ -50,13 +51,20 @@
     <Compile Include="Aula1 - Single Responsibility Principle\DezOuVintePorcento.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\Funcionario.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\IRegraDeCalculo.cs" />
+    <Compile Include="Aula2 - Acoplamento e estabilidade\EnviadorDeEmail.cs" />
+    <Compile Include="Aula2 - Acoplamento e estabilidade\Fatura.cs" />
+    <Compile Include="Aula2 - Acoplamento e estabilidade\GeradorDeNotaFiscal.cs" />
+    <Compile Include="Aula2 - Acoplamento e estabilidade\NotaFiscal.cs" />
+    <Compile Include="Aula2 - Acoplamento e estabilidade\NotaFiscalDAO.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\QuinzeOuVinteCincoPorcento.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\Tester.cs" />
+    <Compile Include="Aula2 - Acoplamento e estabilidade\SAP.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
