@@ -12,6 +12,16 @@ namespace SOLID
         {
 
 
+            /* Aula 3
+            Compra compra = new Compra(500, "Santa Catarina");
+            CalculadoraDePrecos calc = new CalculadoraDePrecos(new TabelaDePrecoPadrao(), new Transportadora());
+
+            double resultado = calc.Calcula(compra);
+
+            Console.WriteLine("O preco da compra é  :" + resultado);
+            Console.ReadKey();
+            */
+
             /* Aula 2
             EnviadorDeEmail enviadorEmail = new EnviadorDeEmail();
             NotaFiscalDAO nfDao = new NotaFiscalDAO();

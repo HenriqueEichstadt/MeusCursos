@@ -56,11 +56,18 @@
     <Compile Include="Aula2 - Acoplamento e estabilidade\GeradorDeNotaFiscal.cs" />
     <Compile Include="Aula2 - Acoplamento e estabilidade\NotaFiscal.cs" />
     <Compile Include="Aula2 - Acoplamento e estabilidade\NotaFiscalDAO.cs" />
+    <Compile Include="CalculadoraDePrecos.cs" />
+    <Compile Include="Compra.cs" />
+    <Compile Include="Frete.cs" />
+    <Compile Include="IServicoDeEntrega.cs" />
+    <Compile Include="ITabelaDePreco.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\QuinzeOuVinteCincoPorcento.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\Tester.cs" />
     <Compile Include="Aula2 - Acoplamento e estabilidade\SAP.cs" />
+    <Compile Include="TabelaDePrecoPadrao.cs" />
+    <Compile Include="Transportadora.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
