@@ -8,8 +8,6 @@ namespace SOLID
 {
     public class GeradorDeNotaFiscal
     {
-        private EnviadorDeEmail email;
-        private NotaFiscalDAO dao;
         private IList<IAcaoAposGerarNota> acoes;
 
         public GeradorDeNotaFiscal(IList<IAcaoAposGerarNota> acoes)
