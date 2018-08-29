@@ -66,6 +66,8 @@
     <Compile Include="Aula4 - Entendendo o Encapsulamento\Boleto.cs" />
     <Compile Include="Aula4 - Entendendo o Encapsulamento\Fatura.cs" />
     <Compile Include="Aula4 - Entendendo o Encapsulamento\ProcessadorDeBoletos.cs" />
+    <Compile Include="Aula5 - Herança e o Liskov Substitutive Principle\ContaComum.cs" />
+    <Compile Include="Aula5 - Herança e o Liskov Substitutive Principle\ContaEstudante.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Aula1 - Single Responsibility Principle\QuinzeOuVinteCincoPorcento.cs" />
