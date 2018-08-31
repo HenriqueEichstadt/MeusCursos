@@ -50,6 +50,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Avaliador.cs" />
+    <Compile Include="FiltroDeLances.cs" />
+    <Compile Include="MatematicaMaluca.cs" />
     <Compile Include="Palindromo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

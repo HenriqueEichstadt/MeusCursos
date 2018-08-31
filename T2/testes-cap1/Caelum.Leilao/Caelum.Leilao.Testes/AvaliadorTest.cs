@@ -11,7 +11,7 @@ namespace Caelum.Leilao.Testes
     public class AvaliadorTest
     {
         [Test]
-        public void DeveEntenderlancesEmOrdemCrescente()
+        public void DeveEntenderLancesEmOrdemCrescente()
         {
             Usuario henrique = new Usuario("Henrique");
             Usuario davi = new Usuario("Davi");
@@ -19,20 +19,74 @@ namespace Caelum.Leilao.Testes
 
             Leilao leilao = new Leilao("PS3");
 
-            leilao.Propoe(new Lance(henrique, 400));
-            leilao.Propoe(new Lance(guilherme, 250));
-            leilao.Propoe(new Lance(guilherme, 300));
+            leilao.Propoe(new Lance(henrique, 1000));
+            leilao.Propoe(new Lance(guilherme, 2000));
+            leilao.Propoe(new Lance(guilherme, 3000));
 
             Avaliador leioeiro = new Avaliador();
             leioeiro.Avalia(leilao);
 
+            Assert.AreEqual(3000, leioeiro.MaiorLance, 0.00001);
+            Assert.AreEqual(1000, leioeiro.MenorLance, 0.00001);
 
-            double maiorEsperado = 400;
-            double menorEsperado = 250;
+        }
 
-            Assert.AreEqual(maiorEsperado, leioeiro.MaiorLance, 0.00001);
-            Assert.AreEqual(menorEsperado, leioeiro.MenorLance);
+        [Test]
+        public void DeveENtenderLancesEmOrdemDecrescente()
+        {
+            Usuario henrique = new Usuario("Henrique");
+            Usuario davi = new Usuario("Davi");
+            Usuario guilherme = new Usuario("Guilherme");
 
+            Leilao leilao = new Leilao("PS3");
+
+            leilao.Propoe(new Lance(henrique, 3000));
+            leilao.Propoe(new Lance(guilherme, 2000));
+            leilao.Propoe(new Lance(guilherme, 1000));
+
+            Avaliador leioeiro = new Avaliador();
+            leioeiro.Avalia(leilao);
+
+            Assert.AreEqual(3000, leioeiro.MaiorLance, 0.00001);
+            Assert.AreEqual(1000, leioeiro.MenorLance, 0.00001);
+
+        }
+
+        [Test]
+        public void DeveEntenderLeilaoComApenasUmLance()
+        {
+            Usuario henrique = new Usuario("Henrique");
+            Leilao leilao = new Leilao("PS4");
+
+            leilao.Propoe(new Lance(henrique, 1000));
+            Avaliador leioeiro = new Avaliador();
+            leioeiro.Avalia(leilao);
+
+            Assert.AreEqual(1000, leioeiro.MaiorLance, 0.0001);
+            Assert.AreEqual(1000, leioeiro.MenorLance, 0.0001);
+        }   
+
+        [Test]
+        public void DeveEntenderLeilaoComLancesAleatorios()
+        {
+            Usuario henrique = new Usuario("Henrique");
+            Usuario davi = new Usuario("Davi");
+            Usuario guilherme = new Usuario("Guilherme");
+
+            Leilao leilao = new Leilao("PS3");
+
+            leilao.Propoe(new Lance(henrique, 355));
+            leilao.Propoe(new Lance(guilherme, 199));
+            leilao.Propoe(new Lance(davi, 245));
+            leilao.Propoe(new Lance(henrique, 2999));
+            leilao.Propoe(new Lance(guilherme, 533));
+            leilao.Propoe(new Lance(davi, 1536));
+
+            Avaliador leioeiro = new Avaliador();
+            leioeiro.Avalia(leilao);
+
+            Assert.AreEqual(2999, leioeiro.MaiorLance, 0.00001);
+            Assert.AreEqual(199, leioeiro.MenorLance, 0.00001);
         }
 
         [Test]
@@ -52,6 +106,28 @@ namespace Caelum.Leilao.Testes
             leiloeiro.Avalia(leilao);
 
             Assert.AreEqual(1000, leiloeiro.Media);
+        }
+        [Test]
+        public void DeveEncontrarOsTresMaioresLances()
+        {
+            Usuario henrique = new Usuario("Henrique");
+            Usuario maria = new Usuario("Maria");
+            Leilao leilao = new Leilao("PS4");
+
+            leilao.Propoe(new Lance(henrique, 100.0));
+            leilao.Propoe(new Lance(maria, 200.0));
+            leilao.Propoe(new Lance(henrique, 300.0));
+            leilao.Propoe(new Lance(maria, 400.0));
+
+            Avaliador leiloeiro = new Avaliador();
+            leiloeiro.Avalia(leilao);
+
+            var maiores = leiloeiro.TresMaiores;
+
+            Assert.AreEqual(3, maiores.Count);
+            Assert.AreEqual(400, maiores[0].Valor, 0.0001);
+            Assert.AreEqual(300, maiores[1].Valor, 0.0001);
+            Assert.AreEqual(200, maiores[2].Valor, 0.0001);
         }
     }
 }
