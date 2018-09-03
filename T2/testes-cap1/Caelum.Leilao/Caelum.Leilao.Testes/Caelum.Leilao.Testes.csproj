@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AvaliadorTest.cs" />
     <Compile Include="FiltroDeLancesTest.cs" />
+    <Compile Include="LanceTest.cs" />
     <Compile Include="LeilaoTest.cs" />
     <Compile Include="MatematicaMalucaTest.cs" />
     <Compile Include="PalindromoTest.cs" />

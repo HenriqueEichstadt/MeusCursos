@@ -106,5 +106,14 @@ namespace Caelum.Leilao.Testes
             Assert.AreEqual(200, maiores[2].Valor, 0.0001);
         }
 
+        [Test]
+        [ExpectedException(typeof(Exception))]
+        public void NaoDeveAvaliarLeiloesSemNenhumLanceDado()
+        {
+            Leilao leilao = new CriadorDeLeilao().Para("PC Gamer").Constroi();
+            leiloeiro.Avalia(leilao);
+
+
+        }
     }
 }
