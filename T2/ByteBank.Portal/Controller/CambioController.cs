@@ -35,5 +35,21 @@ namespace ByteBank.Portal.Controller
 
             return textoResultado;
         }
+
+        public string Calcular(string moedaOrigem, string moedaDestino, decimal valor)
+        {
+            var valorFinal = _cambioService.Calcular(moedaOrigem, moedaDestino, valor);
+            var textoPagina = View();
+
+            var textoResultado =
+                textoPagina
+                    .Replace("VALOR_MOEDA_ORIGEM", valor.ToString())
+                    .Replace("VALOR_MOEDA_DESTINO", valorFinal.ToString())
+                    .Replace("MOEDA_ORIGEM", moedaOrigem)
+                    .Replace("MOEDA_DESTINO", moedaDestino);
+
+            return textoResultado;
+
+        }
     }
 }
