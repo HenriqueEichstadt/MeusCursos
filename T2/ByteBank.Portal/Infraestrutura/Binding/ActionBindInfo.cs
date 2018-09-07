@@ -29,7 +29,26 @@ namespace ByteBank.Portal.Infraestrutura.Binding
         }
         public object Invoke(object controller)
         {
-            MethidInfo
+            var coutParametros = TuplasArgumentoNomeValor.Count;
+            var possuiArgumentos = coutParametros > 0;
+
+            if (!possuiArgumentos)
+            {
+                return MethodInfo.Invoke(controller, new object[0]);
+            }
+
+            var parametrosMethodInfo = MethodInfo.GetParameters();
+            var parametrosInvoke = new object[coutParametros];
+
+            for (int i = 0; i < coutParametros; i++)
+            {
+                var parametro = parametrosMethodInfo[i];
+                var parametroNome = parametro.Name;
+
+                var argumento = TuplasArgumentoNomeValor.Single(tupla => tupla.Nome == parametroNome);
+                parametrosInvoke[i] = Convert.ChangeType(argumento.Valor, parametro.ParameterType);
+            }
+            return MethodInfo.Invoke(controller, parametrosInvoke);
         }
     }
 }

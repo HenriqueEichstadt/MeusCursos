@@ -9,7 +9,7 @@ namespace ByteBank.Portal.Infraestrutura.Binding
 {
     public class ActionBinder
     {
-        public MethodInfo ObterMethodInfo(object controller, string path)
+        public ActionBindInfo ObterActionBindInfo(object controller, string path)
         {
 
             var idxInterrogacao = path.IndexOf('?');

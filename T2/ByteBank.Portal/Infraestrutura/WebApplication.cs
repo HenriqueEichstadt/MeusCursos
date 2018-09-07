@@ -41,7 +41,7 @@ namespace ByteBank.Portal.Infraestrutura
             var requisicao = contexto.Request;
             var resposta = contexto.Response;
 
-            var path = requisicao.Url.AbsolutePath;
+            var path = requisicao.Url.PathAndQuery;
 
             if (Utilidades.EhArquivo(path))
             {
