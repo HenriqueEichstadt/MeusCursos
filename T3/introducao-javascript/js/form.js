@@ -3,38 +3,36 @@ botaoAdicionar.addEventListener("click", function (event) {
     event.preventDefault();
 
     var form = document.querySelector("#form-adiciona");
-
     var paciente = obtemPacienteDoFormulario(form);
-
-    var pacienteTr = montaTr(paciente);
-
     var erros = validaPaciente(paciente);
-
     if (erros.length > 0) {
-       exibeMensagensDeErro(erros);
+        exibeMensagensDeErro(erros);
         return;
     }
-
-    var tabela = document.querySelector("#tabela-pacientes");
-
-    tabela.appendChild(pacienteTr);
-
+    adicionaPacienteNaTabela(paciente);
     form.reset();
     var mensagensErro = document.querySelector("#mensagens-erro");
     mensagensErro.innerHTML = "";
 });
 
+function adicionaPacienteNaTabela(paciente) {
+    var pacienteTr = montaTr(paciente);
+    var tabela = document.querySelector("#tabela-pacientes");
+    tabela.appendChild(pacienteTr);
 
-function exibeMensagensDeErro(erros){
-     var ul = document.querySelector("#mensagens-erro");
+}
+
+
+function exibeMensagensDeErro(erros) {
+    var ul = document.querySelector("#mensagens-erro");
     ul.innerHTML = "";
-    
-     erros.forEach(function(erro){
-         var li = document.createElement("li");
-         li.textContent = erro;
-         ul.appendChild(li);
-     });
-    
+
+    erros.forEach(function (erro) {
+        var li = document.createElement("li");
+        li.textContent = erro;
+        ul.appendChild(li);
+    });
+
 }
 
 
@@ -83,6 +81,6 @@ function validaPaciente(paciente) {
     if (paciente.gordura.length == 0) erros.push("A gordura do paciente não pode ser em branco!");
     if (paciente.peso.length == 0) erros.push("O peso do paciente não pode ser em branco!");
 
-    
+
     return erros;
 }
