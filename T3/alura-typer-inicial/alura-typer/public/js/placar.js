@@ -1,11 +1,25 @@
+
+$("#botao-placar").click(mostraPlacar);
+
 function inserePlacar() {
     var corpoTabela = $(".placar").find("tbody");
     var usuario = "Douglas";
     var numPalavras = $("#contador-palavras").text();
 
-    var linha = novaLinha(usuario,numPalavras);
+    var linha = novaLinha(usuario, numPalavras);
     linha.find(".botao-remover").click(removeLinha);
     corpoTabela.append(linha);
+    $(".placar").slideDown(500);
+    scrollPlacar();
+}
+
+function scrollPlacar() {
+    var posicaoPlacar = $(".placar").offset().top;
+
+    $("body").animate(
+    {
+        scrollTop: posicaoPlacar + "px"
+    }, 1000);
 }
 
 function novaLinha(usuario, palavras) {
@@ -30,5 +44,14 @@ function novaLinha(usuario, palavras) {
 
 function removeLinha() {
     event.preventDefault();
-    $(this).parent().parent().remove();
+    var linha = $(this).parent().parent();
+    linha.fadeOut(1000);
+    setTimeout(function () {
+        linha.remove();
+    }, 1000);
+
+}
+
+function mostraPlacar() {
+    $(".placar").stop().slideToggle(1000);
 }
