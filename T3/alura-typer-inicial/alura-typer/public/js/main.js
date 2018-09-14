@@ -49,7 +49,7 @@ function inicializaCronometro() {
     });
 }
 
-function finalizaJogo(){
+function finalizaJogo() {
     campo.attr("disabled", true);
     campo.toggleClass("campo-desativado");
     inserePlacar();
@@ -71,10 +71,8 @@ function inicializaMarcadores() {
     });
 }
 
-$(".botao-remover").click(function(event){  // Erro aqui
-    event.preventDefault();
-    $(this).remove();
-});
+
+
 
 function reiniciaJogo() {
     campo.attr("disabled", false);
@@ -88,17 +86,3 @@ function reiniciaJogo() {
     campo.removeClass("borda-verde");
 }
 
-function inserePlacar() {
-    var corpoTabela = $(".placar").find("tbody");
-    var usuario = "Douglas";
-    var numPalavras = $("#contador-palavras").text();
-    var botaoRemover = "<a href='#'><i class='small material-icons'>delete</i></a>"
-
-    var linha = "<tr>"+
-                    "<td>"+ usuario + "</td>"+
-                    "<td>"+ numPalavras + "</td>"+
-                    "<td>"+ botaoRemover + "</td>"+
-                "</tr>";
-
-                corpoTabela.prepend(linha);
-}
