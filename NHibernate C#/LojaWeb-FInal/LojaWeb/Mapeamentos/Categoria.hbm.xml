@@ -1,0 +1,15 @@
+﻿<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" 
+assembly="Lojinha" namespace="Lojinha.Modelos">
+  <class name="Categoria">
+    <cache usage="nonstrict-read-write"/>
+    <id name="Id">
+      <generator class="identity"/>
+    </id>
+    <property name="Nome"/>
+    <bag name="Produtos">
+      <cache usage="nonstrict-read-write"/>
+      <key column="Categoria"/>
+      <one-to-many class="Produto"/>
+    </bag>
+  </class>
+</hibernate-mapping>
