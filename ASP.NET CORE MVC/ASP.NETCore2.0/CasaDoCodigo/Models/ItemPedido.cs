@@ -2,20 +2,31 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace CasaDoCodigo.Models
 {
+    [DataContract]
     public class ItemPedido : BaseModel
     {
         [Required]
+        [DataMember]
         public Pedido Pedido { get; private set; }
         [Required]
+        [DataMember]
         public Produto Produto { get; private set; }
         [Required]
+        [DataMember]
         public int Quantidade { get; private set; }
         [Required]
+        [DataMember]
         public decimal PrecoUnitario { get; private set; }
+
+        internal void AtualizaQuantidade(int quantidade)
+        {
+            Quantidade = quantidade;
+        }
 
         public ItemPedido()
         {
