@@ -18,5 +18,12 @@ namespace CasaDoCodigo.Repositories
                 .Where(ip => ip.Id == itemPedidoId)
                 .SingleOrDefault();
         }
+
+        public void RemoveItemPedido(int itemPedidoId)
+        {
+            var item = GetItemPedido(itemPedidoId);
+            dbSet.Remove(item);
+            
+        }
     }
 }
