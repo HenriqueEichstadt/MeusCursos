@@ -1,6 +1,9 @@
-﻿namespace CasaDoCodigo.Repositories
+﻿using CasaDoCodigo.Models;
+
+namespace CasaDoCodigo.Repositories
 {
-    internal interface ICadastroRepository
+    public interface ICadastroRepository
     {
+        CadastroRepository Update(int cadastroId, Cadastro novoCadastro);
     }
 }
