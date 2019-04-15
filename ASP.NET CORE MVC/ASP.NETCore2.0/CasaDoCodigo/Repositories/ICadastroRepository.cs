@@ -4,6 +4,6 @@ namespace CasaDoCodigo.Repositories
 {
     public interface ICadastroRepository
     {
-        CadastroRepository Update(int cadastroId, Cadastro novoCadastro);
+        Cadastro Update(int cadastroId, Cadastro novoCadastro);
     }
 }

@@ -23,6 +23,20 @@ namespace CasaDoCodigo.Models
         public string Email { get; set; } = "";
         [Required(ErrorMessage = "Telefone é obrigatório")]
         public string Telefone { get; set; } = "";
+
+        internal void Update(Cadastro novoCadastro)
+        {
+            this.Bairro = novoCadastro.Bairro;
+            this.CEP = novoCadastro.CEP;
+            this.Complemento = novoCadastro.Complemento;
+            this.Email = novoCadastro.Email;
+            this.Endereco = novoCadastro.Endereco;
+            this.Municipio = novoCadastro.Municipio;
+            this.Nome = novoCadastro.Nome;
+            this.Telefone = novoCadastro.Telefone;
+            this.UF = novoCadastro.UF;
+        }
+
         [Required(ErrorMessage = "Endereco é obrigatório")]
         public string Endereco { get; set; } = "";
         [Required(ErrorMessage = "Complemento é obrigatório")]
