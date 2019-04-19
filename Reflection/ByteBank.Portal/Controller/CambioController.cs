@@ -1,6 +1,8 @@
 ﻿using ByteBank.Portal.Infraestrutura;
+using ByteBank.Portal.Model;
 using ByteBank.Service;
 using ByteBank.Service.Cambio;
+using ByteBank.Portal.Filtros;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +20,7 @@ namespace ByteBank.Portal.Controller
         {
             _cambioService = new CambioTesteService();
         }
+        [ApenasHorarioComercial]
         public string MXN()
         {
             var valorFinal = _cambioService.Calcular("MXN", "BRL", 1);
@@ -26,6 +29,8 @@ namespace ByteBank.Portal.Controller
 
             return textoResultado;
         }
+
+        [ApenasHorarioComercial]
         public string USD()
         {
             var valorFinal = _cambioService.Calcular("USD", "BRL", 1);
@@ -36,26 +41,26 @@ namespace ByteBank.Portal.Controller
             return textoResultado;
         }
 
-        public string Calcular(string moedaOrigem, string moedaDestino, decimal valor)
-        {
-            var valorFinal = _cambioService.Calcular(moedaOrigem, moedaDestino, valor);
-            var textoPagina = View();
-
-            var textoResultado =
-                textoPagina
-                    .Replace("VALOR_MOEDA_ORIGEM", valor.ToString())
-                    .Replace("VALOR_MOEDA_DESTINO", valorFinal.ToString())
-                    .Replace("MOEDA_ORIGEM", moedaOrigem)
-                    .Replace("MOEDA_DESTINO", moedaDestino);
-
-            return textoResultado;
-
-        }
-
+        [ApenasHorarioComercial]
         public string Calculo(string moedaOrigem, string moedaDestino, decimal valor) =>
             Calculo("BRL", moedaDestino, valor);
 
+        [ApenasHorarioComercial]
         public string Calculo(string moedaOrigem, string moedaDestino) =>
          Calculo("BRL", moedaDestino, 1);
+
+        [ApenasHorarioComercial]
+        public string Calcular(string moedaOrigem, string moedaDestino, decimal valor)
+        {
+            var valorFinal = _cambioService.Calcular(moedaOrigem, moedaDestino, valor);
+            var modelo = new
+            {
+                MoedaDestino = moedaDestino,
+                ValorDestino = valorFinal,
+                MoedaOrigem = moedaOrigem,
+                ValorOrigem = valor
+            };
+            return View(modelo);
+        }
     }
 }

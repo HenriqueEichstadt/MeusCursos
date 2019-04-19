@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ByteBank.Portal.Infraestrutura
@@ -23,6 +24,22 @@ namespace ByteBank.Portal.Infraestrutura
             var streamLeitura = new StreamReader(streamRecurso);
             var textoPagina = streamLeitura.ReadToEnd();
             return textoPagina;
+        }
+
+        protected string View(object modelo, [CallerMemberName]string nomeArquivo = null)
+        {
+            var viewBruta = View(nomeArquivo);
+            var todasAsPropriedadedDoModelo = modelo.GetType().GetProperties();
+
+            var regex = new Regex("\\{{(.*?)\\}}");
+            var viewProcessada = regex.Replace(viewBruta, (match) => 
+            {
+                var nomePropriedade = match.Groups[1].Value;
+                var propriedade = todasAsPropriedadedDoModelo.Single(prop => prop.Name == nomePropriedade);
+                var valorBruto = propriedade.GetValue(modelo);
+                return valorBruto?.ToString();
+            });
+            return viewProcessada;
         }
     }
 }

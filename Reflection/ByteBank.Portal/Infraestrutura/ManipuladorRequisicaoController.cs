@@ -1,4 +1,5 @@
-﻿using ByteBank.Portal.Infraestrutura.Binding;
+﻿using ByteBank.Portal.Filtros;
+using ByteBank.Portal.Infraestrutura.Binding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace ByteBank.Portal.Infraestrutura
     public class ManipuladorRequisicaoController
     {
         private readonly ActionBinder _actionBinder = new ActionBinder();
+        private readonly FilterResolver _filterResolver = new FilterResolver();
 
         public void Manipular(HttpListenerResponse resposta, string path)
         {
@@ -25,9 +27,11 @@ namespace ByteBank.Portal.Infraestrutura
             var controller = controllerWrapper.Unwrap();
 
             //var methodInfo = controller.GetType().GetMethod(actionNome);
-            var methodInfo = _actionBinder.ObterActionBindInfo(controller, path);
+            var actionBindInfo = _actionBinder.ObterActionBindInfo(controller, path);
 
-            var resultadoAction = (string)methodInfo.Invoke(controller);
+            var filterResult = _filterResolver.VerificarFiltros(actionBindInfo);
+
+            var resultadoAction = (string)actionBindInfo.Invoke(controller);
 
             var buffer = Encoding.UTF8.GetBytes(resultadoAction);
 
