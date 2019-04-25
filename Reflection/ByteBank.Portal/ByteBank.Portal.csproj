@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FF875B3B-E8CA-4136-9172-3C85ADE65993}</ProjectGuid>
+    <ProjectGuid>{59802278-1430-4639-BF96-41A659363F0F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ByteBank.Portal</RootNamespace>
     <AssemblyName>ByteBank.Portal</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,17 +44,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\CambioController.cs" />
-    <Compile Include="Filtros\ApenasHorarioComercial.cs" />
-    <Compile Include="Filtros\FilterResolver.cs" />
+    <Compile Include="Controller\ErroController.cs" />
+    <Compile Include="Filtros\ApenasHorarioComercialFiltroAttribute.cs" />
     <Compile Include="Infraestrutura\Binding\ActionBinder.cs" />
     <Compile Include="Infraestrutura\Binding\ActionBindInfo.cs" />
     <Compile Include="Infraestrutura\Binding\ArgumentoNomeValor.cs" />
     <Compile Include="Infraestrutura\ControllerBase.cs" />
+    <Compile Include="Infraestrutura\Filtros\FilterResolver.cs" />
+    <Compile Include="Infraestrutura\Filtros\FilterResult.cs" />
+    <Compile Include="Infraestrutura\Filtros\FiltroAttribute.cs" />
     <Compile Include="Infraestrutura\ManipuladorRequisicaoArquivo.cs" />
     <Compile Include="Infraestrutura\ManipuladorRequisicaoController.cs" />
     <Compile Include="Infraestrutura\Utilidades.cs" />
     <Compile Include="Infraestrutura\WebApplication.cs" />
-    <Compile Include="Model\CalculoCambioModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -72,12 +74,18 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ByteBank.Service\ByteBank.Service.csproj">
-      <Project>{07ff717e-81c8-4452-87c3-53fef0a8a276}</Project>
+      <Project>{9eebac18-7aed-45a5-b7de-e081f372ba82}</Project>
       <Name>ByteBank.Service</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="View\Cambio\Calculo.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="View\Erro\Inesperado.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

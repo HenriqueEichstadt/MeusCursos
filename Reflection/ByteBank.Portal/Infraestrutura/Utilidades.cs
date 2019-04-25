@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,6 +13,9 @@ namespace ByteBank.Portal.Infraestrutura
 
         public static bool EhArquivo(string path)
         {
+            // /Assets/css/styles.css
+            // /Assets/js/main.js
+            
             var partesPath = path.Split(new char[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
             var ultimaParte = partesPath.Last();
 
@@ -19,15 +24,20 @@ namespace ByteBank.Portal.Infraestrutura
 
         public static string ConverterPathParaNomeAssembly(string path)
         {
-            //Assets/css/styles.css
-            //Assets/js/main.js
-
             var prefixoAssembly = "ByteBank.Portal";
             var pathComPontos = path.Replace('/', '.');
+
             var nomeCompleto = $"{prefixoAssembly}{pathComPontos}";
 
             return nomeCompleto;
         }
+
+        public static Stream ObterStreamDePagina(string nomeCompleto)
+        {
+            var assembly = Assembly.GetExecutingAssembly();
+            return assembly.GetManifestResourceStream(nomeCompleto);
+        }
+
         public static string ObterTipoDeConteudo(string path)
         {
             if (path.EndsWith(".css"))
@@ -40,9 +50,6 @@ namespace ByteBank.Portal.Infraestrutura
                 return "text/html; charset=utf-8";
 
             throw new NotImplementedException("Tipo de conteúdo não previsto!");
-
-
         }
-
     }
 }

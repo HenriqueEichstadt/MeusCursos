@@ -17,28 +17,32 @@ namespace ByteBank.Portal.Infraestrutura
             var type = GetType();
             var diretorioNome = type.Name.Replace("Controller", "");
 
-            var nomeCompletoresource = "ByteBank.Portal.View.USD.html";
+            var nomeCompletoResource = $"ByteBank.Portal.View.{diretorioNome}.{nomeArquivo}.html";
             var assembly = Assembly.GetExecutingAssembly();
-            var streamRecurso = assembly.GetManifestResourceStream(nomeCompletoresource);
+
+            var streamRecurso = assembly.GetManifestResourceStream(nomeCompletoResource);
 
             var streamLeitura = new StreamReader(streamRecurso);
             var textoPagina = streamLeitura.ReadToEnd();
+
             return textoPagina;
         }
 
         protected string View(object modelo, [CallerMemberName]string nomeArquivo = null)
         {
             var viewBruta = View(nomeArquivo);
-            var todasAsPropriedadedDoModelo = modelo.GetType().GetProperties();
+            var todasAsPropriedadesDoModelo = modelo.GetType().GetProperties();
 
             var regex = new Regex("\\{{(.*?)\\}}");
-            var viewProcessada = regex.Replace(viewBruta, (match) => 
+            var viewProcessada = regex.Replace(viewBruta, (match) =>
             {
                 var nomePropriedade = match.Groups[1].Value;
-                var propriedade = todasAsPropriedadedDoModelo.Single(prop => prop.Name == nomePropriedade);
+                var propriedade = todasAsPropriedadesDoModelo.Single(prop => prop.Name == nomePropriedade);
+
                 var valorBruto = propriedade.GetValue(modelo);
                 return valorBruto?.ToString();
             });
+
             return viewProcessada;
         }
     }

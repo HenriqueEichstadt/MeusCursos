@@ -16,9 +16,7 @@ namespace ByteBank.Portal.Infraestrutura
         public WebApplication(string[] prefixos)
         {
             if (prefixos == null)
-
-                throw new ArgumentException(nameof(prefixos));
-
+                throw new ArgumentNullException(nameof(prefixos));
             _prefixos = prefixos;
         }
 
@@ -43,7 +41,7 @@ namespace ByteBank.Portal.Infraestrutura
 
             var path = requisicao.Url.PathAndQuery;
 
-            if (Utilidades.EhArquivo(path))
+            if(Utilidades.EhArquivo(path))
             {
                 var manipulador = new ManipuladorRequisicaoArquivo();
                 manipulador.Manipular(resposta, path);

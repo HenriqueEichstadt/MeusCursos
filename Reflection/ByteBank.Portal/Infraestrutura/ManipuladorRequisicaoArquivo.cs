@@ -18,14 +18,12 @@ namespace ByteBank.Portal.Infraestrutura
 
             var resourceStream = assembly.GetManifestResourceStream(nomeResource);
 
-
             if (resourceStream == null)
             {
                 resposta.StatusCode = 404;
                 resposta.OutputStream.Close();
             }
             else
-            
                 using (resourceStream)
                 {
                     var bytesResource = new byte[resourceStream.Length];

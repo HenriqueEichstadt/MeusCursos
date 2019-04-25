@@ -13,8 +13,8 @@ namespace ByteBank.Portal.Infraestrutura.Binding
 
         public ArgumentoNomeValor(string nome, string valor)
         {
-            Nome = nome ?? throw new ArgumentException(nameof(nome));
-            Valor = valor ?? throw new ArgumentException(nameof(valor));
+            Nome = nome ?? throw new ArgumentNullException(nameof(nome));
+            Valor = valor ?? throw new ArgumentNullException(nameof(valor));
         }
     }
 }
