@@ -1,6 +1,11 @@
 ﻿using ByteBank.Portal.Controller;
+using ByteBank.Portal.Infraestrutura.IoC;
+using ByteBank.Service;
+using ByteBank.Service.Cambio;
+using ByteBank.Service.Cartao;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -12,6 +17,17 @@ namespace ByteBank.Portal.Infraestrutura
     public class WebApplication
     {
         private readonly string[] _prefixos;
+
+        private readonly ByteBank.Portal.Infraestrutura.IoC.IContainer _container = new ContainerSimples();
+
+        private void Configurar()
+        {
+            //_container.Registrar(typeof(ICambioService), typeof(CambioTesteService));
+            //_container.Registrar(typeof(ICartaoService), typeof(CartaoServiceTeste));
+
+            _container.Registrar<ICartaoService, CartaoServiceTeste>();
+            _container.Registrar<ICambioService, CambioTesteService>();
+        }
 
         public WebApplication(string[] prefixos)
         {
@@ -48,7 +64,7 @@ namespace ByteBank.Portal.Infraestrutura
             }
             else
             {
-                var manipulador = new ManipuladorRequisicaoController();
+                var manipulador = new ManipuladorRequisicaoController(_container);
                 manipulador.Manipular(resposta, path);
             }
 
