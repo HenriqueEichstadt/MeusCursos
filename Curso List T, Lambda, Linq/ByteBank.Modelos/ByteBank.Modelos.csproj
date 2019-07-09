@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2C9C301E-5B56-4195-8662-30C84E970EC8}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>ByteBank.SistemaAgencia</RootNamespace>
-    <AssemblyName>ByteBank.SistemaAgencia</AssemblyName>
+    <ProjectGuid>{C2175F0D-7024-465E-947F-C0FB51887A9C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ByteBank.Modelos</RootNamespace>
+    <AssemblyName>ByteBank.Modelos</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -21,9 +20,9 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\ByteBank.Modelos.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -42,18 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExtratorValorDeArgumentosURL.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="AutenticacaoHelper.cs" />
+    <Compile Include="ClasseTeste.cs" />
+    <Compile Include="Cliente.cs" />
+    <Compile Include="ContaCorrente.cs" />
+    <Compile Include="Funcionarios\Auxiliar.cs" />
+    <Compile Include="Funcionarios\Desenvolvedor.cs" />
+    <Compile Include="Funcionarios\Designer.cs" />
+    <Compile Include="Funcionarios\Funcionario.cs" />
+    <Compile Include="Funcionarios\FuncionarioAutenticavel.cs" />
+    <Compile Include="Funcionarios\GerenteDeConta.cs" />
+    <Compile Include="GerenciadorBonificacao.cs" />
+    <Compile Include="IAutenticavel.cs" />
+    <Compile Include="OperacaoFinanceiraException.cs" />
+    <Compile Include="ParceiroComercial.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ByteBank.Modelos\ByteBank.Modelos.csproj">
-      <Project>{C2175F0D-7024-465E-947F-C0FB51887A9C}</Project>
-      <Name>ByteBank.Modelos</Name>
-    </ProjectReference>
+    <Compile Include="SaldoInsuficienteException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
