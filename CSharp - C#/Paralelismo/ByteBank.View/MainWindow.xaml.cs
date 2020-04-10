@@ -1,6 +1,7 @@
 ﻿using ByteBank.Core.Model;
 using ByteBank.Core.Repository;
 using ByteBank.Core.Service;
+using ByteBank.View.Processamento.Aula1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,45 +22,19 @@ namespace ByteBank.View
 {
     public partial class MainWindow : Window
     {
-        private readonly ContaClienteRepository r_Repositorio;
-        private readonly ContaClienteService r_Servico;
+        private ProcessamentoAula1 _processamentoAula1;
 
         public MainWindow()
         {
             InitializeComponent();
-
-            r_Repositorio = new ContaClienteRepository();
-            r_Servico = new ContaClienteService();
+            _processamentoAula1 = new ProcessamentoAula1(this);
         }
 
         private void BtnProcessar_Click(object sender, RoutedEventArgs e)
         {
-            var contas = r_Repositorio.GetContaClientes();
-
-            var resultado = new List<string>();
-
-            AtualizarView(new List<string>(), TimeSpan.Zero);
-
-            var inicio = DateTime.Now;
-
-            foreach (var conta in contas)
-            {
-                var resultadoConta = r_Servico.ConsolidarMovimentacao(conta);
-                resultado.Add(resultadoConta);
-            }
-
-            var fim = DateTime.Now;
-
-            AtualizarView(resultado, fim - inicio);
+           
         }
 
-        private void AtualizarView(List<String> result, TimeSpan elapsedTime)
-        {
-            var tempoDecorrido = $"{ elapsedTime.Seconds }.{ elapsedTime.Milliseconds} segundos!";
-            var mensagem = $"Processamento de {result.Count} clientes em {tempoDecorrido}";
-
-            LstResultados.ItemsSource = result;
-            TxtTempo.Text = mensagem;
-        }
+       
     }
 }
