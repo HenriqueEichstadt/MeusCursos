@@ -32,7 +32,7 @@ namespace ByteBank.View
 
         private void BtnProcessar_Click(object sender, RoutedEventArgs e)
         {
-           
+            _processamentoAula1.Executar();
         }
 
        
