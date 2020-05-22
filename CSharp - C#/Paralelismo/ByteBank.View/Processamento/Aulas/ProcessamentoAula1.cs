@@ -9,7 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using ByteBank.Core.Model;
 
-namespace ByteBank.View.Processamento.Aula1
+namespace ByteBank.View.Processamento.Aulas
 {
     public class ProcessamentoAula1 : ProcessamentoBase
     {
