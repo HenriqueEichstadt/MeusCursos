@@ -24,19 +24,19 @@ namespace ByteBank.View
     {
         private ProcessamentoAula1 _processamentoAula1;
         private ProcessamentoAula2 _processamentoAula2;
+        private ProcessamentoAula3 _processamentoAula3;
 
         public MainWindow()
         {
             InitializeComponent();
             _processamentoAula1 = new ProcessamentoAula1(this);
             _processamentoAula2 = new ProcessamentoAula2(this);
+            _processamentoAula3 = new ProcessamentoAula3(this);
         }
 
         private void BtnProcessar_Click(object sender, RoutedEventArgs e)
         {
-            _processamentoAula2.Executar();
+            _processamentoAula3.Executar();
         }
-
-       
     }
 }

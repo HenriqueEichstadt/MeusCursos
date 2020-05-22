@@ -70,6 +70,7 @@
   <ItemGroup>
     <Compile Include="Processamento\Aulas\ProcessamentoAula1.cs" />
     <Compile Include="Processamento\Aulas\ProcessamentoAula2.cs" />
+    <Compile Include="Processamento\Aulas\ProcessamentoAula3.cs" />
     <Compile Include="Processamento\ProcessamentoBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

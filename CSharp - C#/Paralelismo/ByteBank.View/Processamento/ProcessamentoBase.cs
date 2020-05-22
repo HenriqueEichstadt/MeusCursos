@@ -23,10 +23,10 @@ namespace ByteBank.View.Processamento
 
         public abstract void Executar();
 
-        protected void AtualizarView(List<String> result, TimeSpan elapsedTime)
+        protected virtual void AtualizarView(IEnumerable<String> result, TimeSpan elapsedTime)
         {
             var tempoDecorrido = $"{ elapsedTime.Seconds }.{ elapsedTime.Milliseconds} segundos!";
-            var mensagem = $"Processamento de {result.Count} clientes em {tempoDecorrido}";
+            var mensagem = $"Processamento de {result.Count()} clientes em {tempoDecorrido}";
 
             MainWindow.LstResultados.ItemsSource = result;
             MainWindow.TxtTempo.Text = mensagem;
