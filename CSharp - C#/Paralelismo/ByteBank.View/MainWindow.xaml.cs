@@ -1,6 +1,7 @@
 ﻿using ByteBank.Core.Model;
 using ByteBank.Core.Repository;
 using ByteBank.Core.Service;
+using ByteBank.View.Processamento;
 using ByteBank.View.Processamento.Aulas;
 using System;
 using System.Collections.Generic;
@@ -22,21 +23,16 @@ namespace ByteBank.View
 {
     public partial class MainWindow : Window
     {
-        private ProcessamentoAula1 _processamentoAula1;
-        private ProcessamentoAula2 _processamentoAula2;
-        private ProcessamentoAula3 _processamentoAula3;
-
+        private ProcessamentoBase _processamento;
         public MainWindow()
         {
             InitializeComponent();
-            _processamentoAula1 = new ProcessamentoAula1(this);
-            _processamentoAula2 = new ProcessamentoAula2(this);
-            _processamentoAula3 = new ProcessamentoAula3(this);
+            _processamento = new ProcessamentoAula4(this);
         }
 
         private void BtnProcessar_Click(object sender, RoutedEventArgs e)
         {
-            _processamentoAula3.Executar();
+            _processamento.Executar();
         }
     }
 }

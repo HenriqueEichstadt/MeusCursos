@@ -23,6 +23,13 @@ namespace ByteBank.View.Processamento
 
         public abstract void Executar();
 
+        public void LimparView()
+        {
+            MainWindow.LstResultados.ItemsSource = null;
+            MainWindow.TxtProgresso = null;
+            MainWindow.PgsProgresso.Value = 0;
+        }
+
         protected virtual void AtualizarView(IEnumerable<String> result, TimeSpan elapsedTime)
         {
             var tempoDecorrido = $"{ elapsedTime.Seconds }.{ elapsedTime.Milliseconds} segundos!";
