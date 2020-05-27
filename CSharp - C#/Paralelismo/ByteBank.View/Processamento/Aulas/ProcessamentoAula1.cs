@@ -59,6 +59,8 @@ namespace ByteBank.View.Processamento.Aulas
             AtualizarView(resultado, fim - inicio);
         }
 
+        public override void Cancelar() { }
+
         private Thread CriarThread(List<string> resultado, IEnumerable<ContaCliente> contas)
         {
             var listContas = contas.ToList();

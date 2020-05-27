@@ -56,6 +56,8 @@ namespace ByteBank.View.Processamento.Aulas
            
         }
 
+        public override void Cancelar() { }
+
     }
 
 }

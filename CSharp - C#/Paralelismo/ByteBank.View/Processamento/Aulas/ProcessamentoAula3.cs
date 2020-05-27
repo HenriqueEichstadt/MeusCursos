@@ -30,6 +30,8 @@ namespace ByteBank.View.Processamento.Aulas
             MainWindow.BtnProcessar.IsEnabled = true;
         }
 
+        public override void Cancelar() { }
+
         private async Task<string[]> ConsolidarContas(IEnumerable<ContaCliente> contas)
         {
             var tasks = contas.Select(conta =>

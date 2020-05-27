@@ -27,12 +27,17 @@ namespace ByteBank.View
         public MainWindow()
         {
             InitializeComponent();
-            _processamento = new ProcessamentoAula4(this);
+            _processamento = new ProcessamentoAula5(this);
         }
 
         private void BtnProcessar_Click(object sender, RoutedEventArgs e)
         {
             _processamento.Executar();
+        }
+
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            _processamento.Cancelar();
         }
     }
 }

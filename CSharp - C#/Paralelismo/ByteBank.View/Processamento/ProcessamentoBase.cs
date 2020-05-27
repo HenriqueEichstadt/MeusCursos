@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ByteBank.View.Processamento
@@ -12,6 +13,7 @@ namespace ByteBank.View.Processamento
     {
         public ContaClienteRepository R_Repositorio { get; }
         public ContaClienteService R_Servico { get; }
+        public CancellationTokenSource Cts { get; set; }
         public MainWindow MainWindow { get; }
 
         public ProcessamentoBase(MainWindow mainWindow)
@@ -22,6 +24,8 @@ namespace ByteBank.View.Processamento
         }
 
         public abstract void Executar();
+
+        public abstract void Cancelar();
 
         public void LimparView()
         {
