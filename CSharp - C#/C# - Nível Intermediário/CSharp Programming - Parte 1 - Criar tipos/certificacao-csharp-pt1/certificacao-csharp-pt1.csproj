@@ -47,13 +47,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aula1 - criar tipos de valor, incluindo estruturas e enum\1 - Tipos de Valor\TiposDeValor.cs" />
-    <Compile Include="Aula1 - criar tipos de valor, incluindo estruturas e enum\2 - Tipos Inteiros\Inteiros.cs" />
-    <Compile Include="Aula1 - criar tipos de valor, incluindo estruturas e enum\3 - Tipos de Ponto Flutuante\PontoFlutuante.cs" />
-    <Compile Include="Aula1 - criar tipos de valor, incluindo estruturas e enum\4 - Decimal\Decimal.cs" />
-    <Compile Include="Aula1 - criar tipos de valor, incluindo estruturas e enum\5 - Booleanos\Booleanos.cs" />
-    <Compile Include="Aula1 - criar tipos de valor, incluindo estruturas e enum\6 - Estruturas Definidas pelo Usuário\Estruturas.cs" />
-    <Compile Include="Aula1 - criar tipos de valor, incluindo estruturas e enum\7 - Enums\Enumeracoes.cs" />
+    <Compile Include="Aula 1 e 2\1 - Tipos de Valor\TiposDeValor.cs" />
+    <Compile Include="Aula 1 e 2\2 - Tipos Inteiros\Inteiros.cs" />
+    <Compile Include="Aula 1 e 2\3 - Tipos de Ponto Flutuante\PontoFlutuante.cs" />
+    <Compile Include="Aula 1 e 2\4 - Decimal\Decimal.cs" />
+    <Compile Include="Aula 1 e 2\5 - Booleanos\Booleanos.cs" />
+    <Compile Include="Aula 1 e 2\6 - Estruturas Definidas pelo Usuário\Estruturas.cs" />
+    <Compile Include="Aula 1 e 2\7 - Enums\Enumeracoes.cs" />
+    <Compile Include="Aula 3\1 - Tipos de Referência\TiposDeReferencia.cs" />
+    <Compile Include="Aula 3\2 - Classes\Classes.cs" />
+    <Compile Include="Aula 3\3 - Interfaces\Interfaces.cs" />
+    <Compile Include="Aula 3\4 - Delegates\Delegates.cs" />
+    <Compile Include="Aula 3\5 - Objetos\Objetos.cs" />
+    <Compile Include="Aula 3\6 - Dynamic\Dinamicos.cs" />
+    <Compile Include="Aula 3\7 - Strings\Strings.cs" />
     <Compile Include="IAulaItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
