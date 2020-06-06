@@ -61,6 +61,12 @@
     <Compile Include="Aula 3\5 - Objetos\Objetos.cs" />
     <Compile Include="Aula 3\6 - Dynamic\Dinamicos.cs" />
     <Compile Include="Aula 3\7 - Strings\Strings.cs" />
+    <Compile Include="Aula 4\2 - Metodos\Metodos.cs" />
+    <Compile Include="Aula 4\3 - Parametros Opcionais\ParametrosNomeados.cs" />
+    <Compile Include="Aula 4\3 - Parametros Opcionais\ParametrosOpcionais.cs" />
+    <Compile Include="Aula 4\4 - Métodos de Extensão\MetodosDeExtensao.cs" />
+    <Compile Include="Aula 4\5 - Propriedades Indexadas\IDictionary.cs" />
+    <Compile Include="Aula 4\5 - Propriedades Indexadas\PropriedadesIndexadas.cs" />
     <Compile Include="IAulaItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
