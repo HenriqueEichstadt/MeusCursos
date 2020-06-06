@@ -11,6 +11,11 @@ namespace certificacao_csharp_roteiro
         public void Executar()
         {
             int numero = 57;
+
+            // Nesta linha, número está sofrendo boxing
+            object caixa = numero;
+
+            Console.WriteLine(string.Concat("Resposta", numero, 57, true));
         }
     }
 }

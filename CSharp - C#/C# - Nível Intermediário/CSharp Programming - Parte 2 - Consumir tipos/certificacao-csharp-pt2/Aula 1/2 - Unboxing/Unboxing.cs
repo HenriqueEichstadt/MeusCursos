@@ -11,6 +11,18 @@ namespace certificacao_csharp_roteiro
         public void Executar()
         {
             int numero = 57;      // tipo de valor
+            object caixa = numero; // boxing
+
+            try
+            {
+                int unboxed = (int)caixa;
+                
+                Console.WriteLine("Unboxing Ok.");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("{0} Erro: unboxing incorreto", e.Message);
+            }
         }
     }
 }
