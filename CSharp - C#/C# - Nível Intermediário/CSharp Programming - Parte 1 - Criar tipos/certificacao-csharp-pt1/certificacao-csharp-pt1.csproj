@@ -67,6 +67,8 @@
     <Compile Include="Aula 4\4 - Métodos de Extensão\MetodosDeExtensao.cs" />
     <Compile Include="Aula 4\5 - Propriedades Indexadas\IDictionary.cs" />
     <Compile Include="Aula 4\5 - Propriedades Indexadas\PropriedadesIndexadas.cs" />
+    <Compile Include="Aula 5\1 - Métodos Sobrecarregados\Sobrecargas.cs" />
+    <Compile Include="Aula 5\2 - Métodos Substituídos\2 - Métodos Substituídos.cs" />
     <Compile Include="IAulaItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
