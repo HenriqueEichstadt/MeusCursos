@@ -49,6 +49,16 @@
   <ItemGroup>
     <Compile Include="Aula 1\1 - Boxing\Boxing.cs" />
     <Compile Include="Aula 1\2 - Unboxing\Unboxing.cs" />
+    <Compile Include="Aula 2\1 - Conversões implícitas\ConversoesImplicitas.cs" />
+    <Compile Include="Aula 2\2 - Conversões explícitas\ConversoesExplicitas.cs" />
+    <Compile Include="Aula 3\3 - Operadores IS e AS\OperadoresISeAS.cs" />
+    <Compile Include="Aula 3\4 - Conversões definidas pelo usuário\OperadoresDeConversao.cs" />
+    <Compile Include="Aula 3\5 - Conversões com classes auxiliares\MetodosAuxiliares.cs" />
+    <Compile Include="Aula 4\1 - string, var, object e dynamic\UsandoDynamic.cs" />
+    <Compile Include="Aula 4\2 - Conversões entre dynamic e outros\ConversoesDeDynamic.cs" />
+    <Compile Include="Aula 4\3 - Resolução de sobrecarga\ResolucaoSobrecarga.cs" />
+    <Compile Include="Aula 4\4 - Adicionando membros dinamicamente\UsandoExpandObject.cs" />
+    <Compile Include="Aula 4\5 - Interoperabilidade COM\InteropCOM.cs" />
     <Compile Include="IAulaItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -57,6 +67,8 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Aula 3" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
