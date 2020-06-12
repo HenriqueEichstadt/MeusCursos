@@ -29,6 +29,3 @@ namespace certificacao_csharp_roteiro
         }
     }
 }
-
-///<image url="$(ProjectDir)img16.png" />
-
