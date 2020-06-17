@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topico1.PropriedadesEAcessa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topico2.ProjetarInterface", "Topico2.ProjetarInterface\Topico2.ProjetarInterface.csproj", "{A068A2BB-F1DE-4892-8BAA-D3FEEBA258FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Topico3.InterfaceExplicita", "Topico3.InterfaceExplicita\Topico3.InterfaceExplicita.csproj", "{F5AD4B8B-52B2-4198-ACB6-A5AE2EAF95CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A068A2BB-F1DE-4892-8BAA-D3FEEBA258FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A068A2BB-F1DE-4892-8BAA-D3FEEBA258FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A068A2BB-F1DE-4892-8BAA-D3FEEBA258FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5AD4B8B-52B2-4198-ACB6-A5AE2EAF95CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5AD4B8B-52B2-4198-ACB6-A5AE2EAF95CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5AD4B8B-52B2-4198-ACB6-A5AE2EAF95CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5AD4B8B-52B2-4198-ACB6-A5AE2EAF95CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
