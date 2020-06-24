@@ -4,24 +4,30 @@ namespace _01.ByteBank
 {
     class ContaBancaria
     {
-        private decimal saldo = 0m;
+        private decimal _saldo = 0m;
 
         public ContaBancaria(decimal saldo)
         {
-            this.saldo = saldo;
+            this._saldo = saldo;
             Console.WriteLine(this);
         }
 
         public void SacarDinheiro(decimal quantia)
         {
+            if (_saldo < quantia)
+            {
+                Console.WriteLine("Saldo insuficiente.");
+                // Sai fora do método
+                return;
+            }
+
             Sacar(quantia);
             ImprimirComprovante();
-            ///< image url="$(ProjectDir)\img1.png"/>
         }
 
         private bool TemSaldoSuficiente(decimal quantia)
         {
-            return quantia <= saldo;
+            return quantia <= _saldo;
         }
 
         private void ImprimirComprovante()
@@ -32,13 +38,13 @@ namespace _01.ByteBank
         private void Sacar(decimal quantia)
         {
             Console.WriteLine($"Sacando {quantia:C}");
-            saldo = saldo - quantia;
+            _saldo = _saldo - quantia;
             Console.WriteLine(this);
         }
 
         public override string ToString()
         {
-            return $"Saldo: {saldo:C}";
+            return $"Saldo: {_saldo:C}";
         }
     }
 }

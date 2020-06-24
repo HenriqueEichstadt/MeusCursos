@@ -9,10 +9,28 @@ namespace _01.ByteBank
 
         static void Main(string[] args)
         {
+            // ContaBancaria conta = new ContaBancaria(100);
+            // conta.SacarDinheiro(35);
+            // conta.SacarDinheiro(150);
+            
+            Emprestimo emprestimo = new Emprestimo("A1234");
+            emprestimo.OnPrazoMaximoEstourado += Emprestimo_OnPrazoMaximoEstourado;
+            emprestimo.Prazo = 3;
+            emprestimo.Prazo = 7;
+            emprestimo.CalcularJuros(6000, 3);
+            emprestimo.CalcularJuros(8500, 6);
+            emprestimo.CalcularJuros(11500, 4);
+            
+            CaixaEletronico caixa = new CaixaEletronico();
+            caixa.Sacar(80);
 
+            Console.ReadKey();
         }
 
-
+        private static void Emprestimo_OnPrazoMaximoEstourado(object source, EventArgs args)
+        {
+            Console.WriteLine("Prazo estourado.");
+        }
 
         private static void TestesContaBancaria()
         {

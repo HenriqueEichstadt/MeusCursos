@@ -4,11 +4,11 @@ namespace _01.ByteBank
 {
     public class Emprestimo
     {
-        private int prazo;
-        private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
-        private const decimal JUROS = 0.034m;
+        private int _prazo;
+        private const int PrazoMaximoPagamentoAnos = 5;
+        private const decimal Juros = 0.034m;
 
-        private string codigoContrato;
+        private string _codigoContrato;
 
         private bool ValidarCodigo(string codigoContrato)
         {
@@ -16,7 +16,10 @@ namespace _01.ByteBank
             foreach (var caractere in codigoContrato)
             {
                 //só é válido se for numérico ou maiúscula
-                bool valido = false;
+                bool numerico = Char.IsDigit(caractere);
+                bool maiuscula = Char.IsUpper(caractere);
+                
+                bool valido = numerico || maiuscula;
                 if (!(valido))
                 {
                     codigoContratoValido = false;
@@ -29,8 +32,15 @@ namespace _01.ByteBank
 
         public Emprestimo(string codigoContrato)
         {
-            this.codigoContrato = codigoContrato;
-            Console.WriteLine($"Novo empréstimo com código: {codigoContrato}");
+            if (ValidarCodigo(codigoContrato))
+            {
+                _codigoContrato = codigoContrato;
+                Console.WriteLine($"Novo empréstimo com código: {codigoContrato}");    
+            }
+            else
+            {
+                // lançar uma exceção
+            }
         }
 
         public event PrazoMaximoEstouradoHandler OnPrazoMaximoEstourado;
@@ -39,16 +49,18 @@ namespace _01.ByteBank
         {
             get
             {
-                return prazo;
+                return _prazo;
             }
             set
             {
-                //se o novo prazo for maior que o prazo máximo,
-                //lançar um evento de "prazo estourado"
-                //senão, definir o novo prazo.
-
-                prazo = value;
-                Console.WriteLine($"novo prazo: {prazo}");
+                if (value > PrazoMaximoPagamentoAnos)
+                {
+                    OnPrazoMaximoEstourado?.Invoke(this, new EventArgs());
+                    return;
+                }
+                
+                _prazo = value;
+                Console.WriteLine($"novo prazo: {_prazo}");
             }
         }
 
@@ -63,6 +75,19 @@ namespace _01.ByteBank
             //        E o valor for maior que 7 mil, a taxa é 7,5%
             //   1.2) senão, a taxa de juros é 8,75%
 
+            if (prazo > 0 && prazo < 5 && valor < 7000)
+            {
+                taxaJuros = 0.035m;
+            }
+            else if (prazo > 5 && valor > 7000)
+            {
+                taxaJuros = 0.075m;
+            }
+            else
+            {
+                taxaJuros = 0.0875m;
+            }
+            
             valorJuros = valor * taxaJuros * prazo;
             Console.WriteLine($"valorJuros: {valorJuros}");
             return valorJuros;

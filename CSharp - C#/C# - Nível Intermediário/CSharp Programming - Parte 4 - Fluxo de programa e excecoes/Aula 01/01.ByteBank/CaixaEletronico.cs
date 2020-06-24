@@ -34,34 +34,27 @@ namespace _01.ByteBank
         {
             var resultado = conta.SacarDinheiro(quantia);
 
-            if (resultado == ResultadoOperacao.OperacaoIniciada)
+            switch (resultado)
             {
-                Console.WriteLine("Resultado: Operacão iniciada");
+                case ResultadoOperacao.OperacaoIniciada:
+                    Console.WriteLine("Resultado: Operacão iniciada");
+                    break;
+                case ResultadoOperacao.SaldoInsuficiente:
+                    Console.WriteLine("Resultado: Saldo insuficiente");
+                    break;
+                case ResultadoOperacao.Sucesso:
+                    Console.WriteLine("Resultado: Sucesso");
+                    break;
+                case ResultadoOperacao.ErroNaoTemDinheiro:
+                    Console.WriteLine("Resultado: Erro não tem dinheiro");
+                    break;
+                case ResultadoOperacao.ErroComunicacaoComServidor:
+                    Console.WriteLine("Resultado: Erro de comunicação com Servidor");
+                    break;
+                default:
+                    Console.WriteLine("Resultado: Erro desconhecido");
+                    break;
             }
-            else if (resultado == ResultadoOperacao.SaldoInsuficiente)
-            {
-                Console.WriteLine("Resultado: Saldo insuficiente");
-            }
-            else if (resultado == ResultadoOperacao.Sucesso)
-            {
-                Console.WriteLine("Resultado: Sucesso");
-            }
-            else if (resultado == ResultadoOperacao.ErroNaoTemDinheiro)
-            {
-                Console.WriteLine("Resultado: Erro não tem dinheiro");
-            }
-            else if (resultado == ResultadoOperacao.ErroComunicacaoComServidor)
-            {
-                Console.WriteLine("Resultado: Erro de comunicação com Servidor");
-            }
-            else
-            {
-                Console.WriteLine("Resultado: Erro desconhecido");
-            }
-
-            //TAREFA:
-            //IMPLEMENTAR AS INSTRUÇÕES ACIMA COMO UM
-            //BLOCO DE INSTRUÇÕES SWITCH-CASE
         }
     }
 
@@ -87,8 +80,6 @@ namespace _01.ByteBank
             resultado = Sacar(quantia);
             ImprimirComprovante();
             return resultado;
-
-            ///<image url="$(ProjectDir)\img3.png"/>
         }
 
         private bool TemSaldoSuficiente(decimal quantia)
