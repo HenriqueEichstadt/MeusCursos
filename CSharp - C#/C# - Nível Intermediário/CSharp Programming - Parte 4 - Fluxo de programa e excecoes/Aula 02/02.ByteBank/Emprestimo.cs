@@ -94,13 +94,23 @@ namespace _02.ByteBank
             }
             valorJuros = valor * taxaJuros * prazo;
             Console.WriteLine($"valorJuros: {valorJuros}");
-
+            GravarLog($"O valor calculado dos juros é: {valorJuros}");
             return valorJuros;
         }
 
         public void GravarLog(string mensagem)
         {
-            var arquivo = ARQUIVO_LOG_TESTE;
+            string arquivo = string.Empty;
+
+#if (DEBUG)
+           arquivo = ARQUIVO_LOG_TESTE;
+#else
+           arquivo = ARQUIVO_LOG_PRODUCAO;
+            
+#endif   
+                
+            //var arquivo = ARQUIVO_LOG_TESTE;
+            //var arquivo = ARQUIVO_LOG_PRODUCAO;
 
             Directory.CreateDirectory(Path.GetDirectoryName(arquivo));
             using (var writer = new StreamWriter(arquivo, append: true))
@@ -111,16 +121,17 @@ namespace _02.ByteBank
 
         public void Finalizar()
         {
-            //REGRAS:
-            //=======
-            //No modo TRIAL, somente o método AvaliarEmprestimo() deve ser chamado.
-            //No modo BASIC, os três métodos devem ser chamados.
-            //NO modo ADVANCED, somente os métodos AvaliarEmprestimo() e
-            //      ProcessarEmprestimo() devem ser chamados.
-
+            
+#if TRIAL
+            AvaliarEmprestimo();
+#elif BASIC
             AvaliarEmprestimo();
             ProcessarEmprestimo();
             FinanciarEmprestimo();
+#elif ADVANCED
+            AvaliarEmprestimo();
+            ProcessarEmprestimo();
+#endif
         }
 
         private void FinanciarEmprestimo()
