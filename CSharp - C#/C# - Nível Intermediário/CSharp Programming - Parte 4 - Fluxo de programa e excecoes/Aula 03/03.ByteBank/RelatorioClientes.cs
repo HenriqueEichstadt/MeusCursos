@@ -15,9 +15,9 @@ namespace _03.ByteBank
                 Console.WriteLine("id,nome,sobrenome,email,valor,status");
 
                 //lê primeira linha de dados
-                string linha = leitor.ReadLine();
+                string linha = string.Empty;
                 //verifica fim de arquivo
-                if (linha != null)
+                while ((linha = leitor.ReadLine()) != null)
                 {
                     //imprime a linha do cliente
                     var campos = linha.Split(',');
