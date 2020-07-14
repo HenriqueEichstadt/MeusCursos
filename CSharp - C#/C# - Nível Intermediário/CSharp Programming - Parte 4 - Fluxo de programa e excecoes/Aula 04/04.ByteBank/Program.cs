@@ -20,6 +20,8 @@ namespace _04.ByteBank
 
             //MenuCaixaEletronico menu = new MenuCaixaEletronico();
             //menu.Executar();
+
+            bool existe = ExisteContaComMaisDe50000();
         }
 
 
@@ -31,6 +33,17 @@ namespace _04.ByteBank
             //TAREFA: RETORNAR UMA LISTA COM 
             //TODAS AS CONTAS COM MAIS DE 5 MIL DE SALDO
 
+            foreach (var cliente in clientes)
+            {
+                foreach (var conta in cliente.Contas)
+                {
+                    if (conta.Saldo > 5000)
+                    {
+                        contasEspeciais.Add(conta);
+                    }
+                }
+            }
+            
             return contasEspeciais;
         }
 
@@ -38,9 +51,16 @@ namespace _04.ByteBank
         {
             IList<Cliente> clientes = GetClientes();
 
-            //TAREFA: RETORNAR VERDADEIRO OU FALSO
-            //INDICANDO SE EXISTE CONTA COM MAIS DE 50 MIL DE SALDO
-
+            foreach (var cliente in clientes)
+            {
+                foreach (var conta in cliente.Contas)
+                {
+                    if (conta.Saldo > 50000)
+                    {
+                        return true;
+                    }
+                }
+            }
             return false;
         }
 
@@ -68,21 +88,13 @@ namespace _04.ByteBank
 
         private static int GetFatorial(int numero)
         {
-            //FATORIAL DE 5 = 5 x 4 x 3 x 2 x 1  = 120
-            //FATORIAL DE 4 = 4 x 3 x 2 x 1      = 24
-            //FATORIAL DE 3 = 3 x 2 x 1          = 6
-            //FATORIAL DE 2 = 2 x 1              = 2 
-            //FATORIAL DE 1                      = 1
-            //FATORIAL DE 0                      = 1 
-
             int fatorial = 1;
-            int fator = numero;
 
-            while (fator >= 1)
+            for (int fator = numero; fator >= 1; fator--)
             {
-                fatorial = fatorial * fator;
-                fator = fator - 1;
+                fatorial *= fator;
             }
+            
             System.Console.WriteLine($"fatorial de {numero} é {fatorial}");
 
             return fatorial;
