@@ -10,6 +10,29 @@ namespace _05.ByteBank
     {
         static void Main(string[] args)
         {
+            var conta1 = new ContaCorrente(1, 100);
+            var conta2 = new ContaCorrente(4, 150);
+
+            Console.WriteLine(conta1);
+            Console.WriteLine(conta2);
+
+            ITransferenciaBancaria transferencia = new TransferenciaBancaria();
+            transferencia.Efetuar(conta1, conta2, 30);
+
+            Console.WriteLine(conta1);
+            Console.WriteLine(conta2);
+
+            try
+            {
+                transferencia.Efetuar(conta1, conta2, 250);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Aconteceu um problema na transferência.");
+                Logger.LogErro(ex.ToString());
+            }
+            
+            
             Console.ReadKey();
         }
     }
@@ -34,7 +57,6 @@ namespace _05.ByteBank
         {
             if (Saldo < valor)
             {
-                //throw new ArgumentException("saldo insuficiente");
                 throw new SaldoInsuficienteException();
             }
 
@@ -54,15 +76,24 @@ namespace _05.ByteBank
 
     interface ITransferenciaBancaria
     {
-        void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito
-            , decimal valor);
+        void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito, decimal valor);
     }
 
     class TransferenciaBancaria : ITransferenciaBancaria
     {
-        public void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito
-            , decimal valor)
+        public void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito, decimal valor)
         {
+            if (contaDebito == null)
+                throw new ArgumentNullException(nameof(contaDebito));
+            
+            if(contaCredito == null)
+                throw new ArgumentNullException(nameof(contaCredito));
+            
+            if(valor <= 0)
+                throw new ArgumentOutOfRangeException(nameof(valor));
+            
+            if(valor > contaDebito.Saldo)
+            
             Logger.LogInfo("Entrando do método Efetuar.");
 
             contaDebito.Debitar(valor);
@@ -76,12 +107,12 @@ namespace _05.ByteBank
     {
         private const string CONNECTION_STRING =
             @"Data Source=(localdb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DB\ByteBank.mdf;Integrated Security=True";
+
         private const decimal TAXA_TRANSFERENCIA = 1.0m;
         private SqlConnection connection;
         private SqlTransaction transaction;
 
-        public void Efetuar(ContaCorrente contaCredito, ContaCorrente contaDebito
-            , decimal valor)
+        public void Efetuar(ContaCorrente contaCredito, ContaCorrente contaDebito, decimal valor)
         {
             Logger.LogInfo("Entrando do método Efetuar.");
 
@@ -120,19 +151,6 @@ namespace _05.ByteBank
             command.CommandType = System.Data.CommandType.StoredProcedure;
             return command;
         }
-    }
-
-    [Serializable]
-    public class SaldoInsuficienteException : Exception
-    {
-        public SaldoInsuficienteException() { }
-        public SaldoInsuficienteException(string message) : base(message) { }
-        public SaldoInsuficienteException(string message, Exception inner) : base(message, inner) { }
-        protected SaldoInsuficienteException(
-          System.Runtime.Serialization.SerializationInfo info,
-          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
-
-        public override string Message => "Saldo Insuficiente.";
     }
 
     class Logger
