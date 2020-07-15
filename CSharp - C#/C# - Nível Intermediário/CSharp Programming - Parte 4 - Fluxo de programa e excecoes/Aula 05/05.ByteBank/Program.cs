@@ -16,7 +16,7 @@ namespace _05.ByteBank
             Console.WriteLine(conta1);
             Console.WriteLine(conta2);
 
-            ITransferenciaBancaria transferencia = new TransferenciaBancaria();
+            ITransferenciaBancaria transferencia = new TransferenciaBancaria_BD();
             transferencia.Efetuar(conta1, conta2, 30);
 
             Console.WriteLine(conta1);
@@ -120,17 +120,42 @@ namespace _05.ByteBank
             connection.Open();
             transaction = connection.BeginTransaction();
 
+            // OBTÉM OS COMANDOS DO SQL SERVER
             SqlCommand comandoTransferencia = GetTransferenciaCommand
                 (contaCredito.Id, contaDebito.Id, valor);
             SqlCommand comandoTaxa = GetTaxaTransferenciaCommand
                 (contaCredito.Id, TAXA_TRANSFERENCIA);
 
-            comandoTaxa.ExecuteNonQuery();
-            comandoTransferencia.ExecuteNonQuery();
-            transaction.Commit();
-            Logger.LogInfo("Transferência realizada com sucesso.");
-
-            Logger.LogInfo("Saindo do método Efetuar.");
+            try
+            {
+                // EXECUTA OS COMANDOS NO SERVIDOR DOE BANCO DE DADOS
+                comandoTaxa.ExecuteNonQuery();
+                comandoTransferencia.ExecuteNonQuery();
+                transaction.Commit(); // A TRANSFERÊNCIA OCORRE NESTA LINHA
+                
+                Logger.LogInfo("Transferência realizada com sucesso.");
+            }
+            catch (SqlException ex)
+            {
+                transaction.Rollback();
+                Logger.LogErro(ex.ToString());
+                throw;
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                Logger.LogErro(ex.ToString());
+                throw;
+            }
+            finally
+            {
+                // LIBERA OS RECURSOS
+                comandoTransferencia.Dispose();
+                comandoTaxa.Dispose();
+                transaction.Dispose();
+                connection.Dispose();
+                Logger.LogInfo("Saindo do método Efetuar.");    
+            }
         }
 
         private SqlCommand GetTransferenciaCommand(int contaDebitoId, int contaCreditoId, decimal valorTransferencia)
