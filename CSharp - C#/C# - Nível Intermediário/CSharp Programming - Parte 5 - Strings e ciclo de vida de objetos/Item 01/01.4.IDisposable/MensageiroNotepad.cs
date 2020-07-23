@@ -5,9 +5,10 @@ using System.Runtime.InteropServices;
 
 namespace _01._4.IDisposable_Finalizador
 {
-    class MensageiroNotepad
+    class MensageiroNotepad : IDisposable
     {
         IntPtr ponteiroNotepad;
+        private bool disposedValue;
 
         [DllImport("user32.dll", EntryPoint = "FindWindowEx")]
         public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
@@ -28,12 +29,12 @@ namespace _01._4.IDisposable_Finalizador
             }
         }
 
-        ~MensageiroNotepad()
-        {
-            //Descarta os recursos não-gerenciados:
-            CloseHandleEx(Process.GetCurrentProcess().Handle, ponteiroNotepad);
-            ponteiroNotepad = IntPtr.Zero;
-        }
+        // ~MensageiroNotepad()
+        // {
+        //     //Descarta os recursos não-gerenciados:
+        //     CloseHandleEx(Process.GetCurrentProcess().Handle, ponteiroNotepad);
+        //     ponteiroNotepad = IntPtr.Zero;
+        // }
 
         const uint PROCESS_DUP_HANDLE = 0x0040;
 
@@ -80,6 +81,36 @@ namespace _01._4.IDisposable_Finalizador
             bool success = DuplicateHandle(hProcess, handle, IntPtr.Zero, out dupHandle, 0, false, DuplicateOptions.DUPLICATE_CLOSE_SOURCE);
             CloseHandle(hProcess);
             return success;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                //Descarta os recursos não-gerenciados:
+                CloseHandleEx(Process.GetCurrentProcess().Handle, ponteiroNotepad);
+                ponteiroNotepad = IntPtr.Zero;
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        ~MensageiroNotepad()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: false);
+        }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }

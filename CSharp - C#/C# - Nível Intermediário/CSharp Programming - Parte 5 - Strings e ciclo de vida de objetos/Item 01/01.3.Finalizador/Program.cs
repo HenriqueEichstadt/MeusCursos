@@ -12,6 +12,8 @@ namespace _01._3.Finalizador
                 Livro livro = new Livro();
             }
 
+            GC.Collect();
+            
             Console.ReadKey();
         }
     }
@@ -29,6 +31,16 @@ namespace _01._3.Finalizador
             UltimoId++;
             Id = UltimoId;
             Trace.WriteLine("Livro " + Id + " está sendo criado");
+        }
+
+        ~Livro()
+        {
+            // Liberar somebte os recursos não gerenciados
+            // Recursos de outras linguagens como algo criado em C ou C++ por exemplo.
+            // Este finalizador é apenas um exemplo, não haveria a necessidade de implementar o finlaidador
+            // na classe Livro
+            // O uso de finalizador torna a execução mais lenta.
+            Trace.WriteLine("Livro " + Id + " está sendo finalizado");
         }
     }
 }
