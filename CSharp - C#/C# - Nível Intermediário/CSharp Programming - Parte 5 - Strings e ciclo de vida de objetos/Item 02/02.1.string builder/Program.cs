@@ -11,12 +11,12 @@ namespace _02._1.string_builder
     {
         static void Main(string[] args)
         {
-            string materias = "";
-            materias = materias + "Português";
+            var materias = new StringBuilder();
+            materias.Append("Português");
             Console.WriteLine(materias);
-            materias = materias + ", Matemática";
+            materias.Append(", Matemática");
             Console.WriteLine(materias);
-            materias = materias + ", Geografia";
+            materias.Append(", Geografia");
             Console.WriteLine(materias);
 
             ///<i mage url="$(ProjectDir)/img1.png"/>

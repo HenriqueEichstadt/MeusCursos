@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 
 namespace _02._2.string_reader
 {
@@ -13,16 +14,26 @@ namespace _02._2.string_reader
             //linha a linha.
             //2) Cada Linha deve começar com um caracter "•" e um espaço
 
+            Console.OutputEncoding = Encoding.UTF8;
+            
             string ingredientes = GetIngredientes();
 
-            Console.WriteLine(ingredientes);
-
+            using (StringReader stringReader = new StringReader(ingredientes))
+            {
+                string line;
+                while((line = stringReader.ReadLine()) != null)
+                {
+                    Console.WriteLine($"• {line}");    
+                }    
+            }
+            
             Console.ReadKey();
         }
 
         private static string GetIngredientes()
         {
-            return @"3 cenouras médias raspadas e picadas
+            return 
+@"3 cenouras médias raspadas e picadas
 3 ovos
 1 xícara de óleo
 2 xícaras de açúcar

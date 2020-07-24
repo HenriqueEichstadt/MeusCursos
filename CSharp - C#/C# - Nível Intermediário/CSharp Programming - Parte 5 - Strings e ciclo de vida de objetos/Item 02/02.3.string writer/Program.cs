@@ -17,15 +17,20 @@ namespace _02._3.string_writer
 
             string ingredientes = GetIngredientes();
 
+            string destino;
+            using (StringWriter stringWriter = new StringWriter())
             using (StringReader stringReader = new StringReader(ingredientes))
             {
                 string line;
                 while ((line = stringReader.ReadLine()) != null)
                 {
-                    Console.WriteLine("• " + line);
+                    stringWriter.WriteLine("• " + line);
                 }
-            }
 
+                Console.WriteLine(stringWriter);
+            }
+           
+            
             Console.ReadKey();
         }
 
