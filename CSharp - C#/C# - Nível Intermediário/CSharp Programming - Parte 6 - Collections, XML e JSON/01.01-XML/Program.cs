@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace _01._01
@@ -26,13 +27,35 @@ namespace _01._01
             //  3.2) Abrindo arquivo para leitura com FileStream
             //  3.3) Desserializando stream com método Deserialize()
 
-            ///<image url="$(ProjectDir)\img01.png"/>
-
             //INÍCIO DO CÓDIGO DO PRIMEIRO SISTEMA
+            var dados = ObterDados();
+            var xmlSerializer = new XmlSerializer(typeof(LojaDeFilmes));
+            using (var stringWriter = new StringWriter())
+            {
+                xmlSerializer.Serialize(stringWriter, dados);
+                Console.WriteLine(stringWriter);
+            }
 
-
+            using (var fileStream = new FileStream("MovieStore.xml", FileMode.Create, FileAccess.Write))
+            {
+                xmlSerializer.Serialize(fileStream, dados);
+            }
+            
+            
             //AQUI VEM O CÓDIGO DO SEGUNDO SISTEMA
+            var xmlSerializer2 = new XmlSerializer(typeof(MovieStore));
 
+            MovieStore movieStore;
+            using (var fileStream = new FileStream("MovieStore.xml", FileMode.Open, FileAccess.Read))
+            {
+                movieStore = (MovieStore)xmlSerializer2.Deserialize(fileStream);
+            }
+
+            foreach (var movie in movieStore.Movies)
+            {
+                Console.WriteLine(movie.Title);
+            }
+            
             Console.ReadKey();
 
         }
