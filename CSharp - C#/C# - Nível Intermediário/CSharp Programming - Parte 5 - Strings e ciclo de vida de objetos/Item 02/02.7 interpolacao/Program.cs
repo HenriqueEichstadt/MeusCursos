@@ -23,21 +23,21 @@ namespace _02._7_interpolacao
 
             string documento = 
                 string.Format(
-                @"                                             CONTRATO INDIVIDUAL DE TRABALHO TEMPORÁRIO
+                $@"                                             CONTRATO INDIVIDUAL DE TRABALHO TEMPORÁRIO
 
 
-            EMPREGADOR: {0};
+            EMPREGADOR: {contrato.Empresa};
 
-            EMPREGADO: {1}.
+            EMPREGADO: {contrato.Funcionario}.
 
 
 Pelo presente instrumento particular de contrato individual de trabalho, fica justo e contratado o seguinte:
  
-Cláusula 1ª - O EMPREGADO prestará ao EMPREGADOR, a partir de {2:D} e assinatura deste instrumento, seus trabalhos exercendo a função de {3}, prestando pessoalmente o labor diário no período compreendido entre {4:HH:mm} e {5:HH:mm}, e intervalo de 1 hora para almoço;
+Cláusula 1ª - O EMPREGADO prestará ao EMPREGADOR, a partir de {contrato.Inicio:D} e assinatura deste instrumento, seus trabalhos exercendo a função de {contrato.Cargo}, prestando pessoalmente o labor diário no período compreendido entre {contrato.InicioJornada:HH:mm} e {contrato.FimJornada:HH:mm}, e intervalo de 1 hora para almoço;
 
             Cláusula 2ª - Não haverá expediente nos dias de sábado, sendo prestado a compensação de horário semanal;
 
-            Cláusula 3ª - O EMPREGADOR pagará mensalmente, ao EMPREGADO, a título de salário a importância de {6:C}, com os descontos previstos por lei;
+            Cláusula 3ª - O EMPREGADOR pagará mensalmente, ao EMPREGADO, a título de salário a importância de {contrato.Salario:C}, com os descontos previstos por lei;
 
             Cláusula 4ª - Estará o EMPREGADO subordinado a legislação vigente no que diz respeito aos descontos de faltas e demais sanções disciplinares contidas na Consolidação das Leis do Trabalho.
 
@@ -49,15 +49,15 @@ Cláusula 1ª - O EMPREGADO prestará ao EMPREGADOR, a partir de {2:D} e assinat
 Como prova do acordado, assinam instrumento, afirmado e respeitando seu teor por inteiro, e firmam conjuntamente a este duas testemunhas, comprovando as razões descritas.
 
 
-São Paulo, {7:D}
+São Paulo, {DateTime.Now:D}
  
  
 _______________________________________________________
-{0}
+{contrato.Empresa}
 
 
 _______________________________________________________
-{1}
+{contrato.Funcionario}
 
 
 _______________________________________________________
@@ -66,14 +66,7 @@ _______________________________________________________
 
 _______________________________________________________
 (Nome, R.G, Testemunha)
- ", contrato.Empresa
- , contrato.Funcionario
- , contrato.Inicio
- , contrato.Cargo
- , contrato.InicioJornada
- , contrato.FimJornada
- , contrato.Salario
- , DateTime.Today);
+ ");
             Console.WriteLine(documento);
             Console.ReadKey();
         }
