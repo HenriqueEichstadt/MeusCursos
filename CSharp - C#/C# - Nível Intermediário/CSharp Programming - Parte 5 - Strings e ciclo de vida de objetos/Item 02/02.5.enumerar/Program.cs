@@ -11,10 +11,19 @@ namespace _02._5.enumerar
             Console.WriteLine(documento);
             Console.WriteLine();
 
-            //TAREFA:
-            //======
-            //Imprimir o documento no console, destacando
-            //as letras maiúsculas no texto
+            foreach (var caracter in documento)
+            {
+                if (Char.IsUpper(caracter))
+                {
+                    Console.BackgroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                }
+                else
+                    Console.ResetColor();
+                
+                Console.Write(caracter);
+                
+            }
 
             Console.ReadKey();
         }
