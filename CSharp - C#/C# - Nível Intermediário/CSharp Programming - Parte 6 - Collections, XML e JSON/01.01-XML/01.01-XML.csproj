@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <RootNamespace>_01._01</RootNamespace>
+    <AssemblyName>01.01-XML</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="img01.png" />
+    <None Remove="img02.png" />
+    <None Remove="img03.png" />
+    <None Remove="img04.png" />
+    <None Remove="img05.png" />
+    <None Remove="img06.png" />
+  </ItemGroup>
+
+</Project>
