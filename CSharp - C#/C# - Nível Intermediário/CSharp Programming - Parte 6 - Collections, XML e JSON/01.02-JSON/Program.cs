@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
+using Newtonsoft.Json;
 
 namespace _01._02
 {
-    ///<image url="$(ProjectDir)/img01.png"/>
-    ///<image url="$(ProjectDir)/img02.png"/>
 
     class Program
     {
@@ -16,11 +17,57 @@ namespace _01._02
             //SERIALIZAÇÃO JSON
 
             //1) usando JavaScriptSerializer
-            Console.WriteLine("1) usando JavaScriptSerializer");
+            //SERIALIZANDO
+            Console.WriteLine("1) usando JavaScriptSerializer para Serializar");
 
+            var loja = ObterDados();
+            var javaScriptSerializer = new JavaScriptSerializer();
+            var json = javaScriptSerializer.Serialize(loja);
+            
+            using (var streamWriter = new StreamWriter("Loja.json"))
+            {
+                streamWriter.Write(json);
+            }
+            Console.WriteLine(json);
+            
+            //DESERIALIZANDO
+            Console.WriteLine("1) usando JavaScriptSerializer para Deserializar");
+            var copiaDaLoja = (LojaDeFilmes)javaScriptSerializer.Deserialize(json, typeof(LojaDeFilmes));
+            // ou usar o método Deserialize utilizando tipo genérico.
+            //var copiaDaLoja = javaScriptSerializer.Deserialize<LojaDeFilmes>(json);
+
+            foreach (var filme in copiaDaLoja.Filmes)
+            {
+                Console.WriteLine(filme.Titulo);
+            }
+            
             //2) usando Json.NET (NewtonSoft)
             //Console.WriteLine("2) usando Json.NET (NewtonSoft)");
+            
+            //SERIALIZANDO
+            json = JsonConvert.SerializeObject(loja);
+            using (var streamWriter = new StreamWriter("Loja.json"))
+            {
+                streamWriter.Write(json);
+            }
+            Console.WriteLine(json);
+            
+            //DESERIALIZANDO
+            //copiaDaLoja = (LojaDeFilmes)JsonConvert.DeserializeObject(json);
+            copiaDaLoja = JsonConvert.DeserializeObject<LojaDeFilmes>(json);
 
+            foreach (var filme in copiaDaLoja.Filmes)
+            {
+                Console.WriteLine(filme.Titulo);
+            }
+
+            var movieStore = JsonConvert.DeserializeObject<MovieStore>(json);
+
+            foreach (var movie in movieStore.Movies)
+            {
+                Console.WriteLine(movie.Title);
+            }
+            
             Console.ReadKey();
         }
 
