@@ -7,7 +7,7 @@ namespace _02._06
 {
     class Program
     {
-        static List<string> placas = new List<string>();
+        static PlacasDeCarro placas = new PlacasDeCarro();
 
         static void Main(string[] args)
         {
@@ -19,22 +19,6 @@ namespace _02._06
             {
                 Console.WriteLine(placa);
             }
-
-            ///PROBLEMA: CRIAR UMA COLEÇÃO DE PLACAS DE CARRO VÁLIDAS
-            ///SOLUÇÃO: CRIAR UMA COLEÇÃO PERSONALIZADA
         }
-
-        static bool EhPlacaValida(string value)
-        {
-            Regex regex = new Regex(@"^[A-Z]{3}\-\d{4}$");
-
-            if (regex.IsMatch(value))
-            {
-                return true;
-            }
-
-            return false;
-        }
-
     }
 }
