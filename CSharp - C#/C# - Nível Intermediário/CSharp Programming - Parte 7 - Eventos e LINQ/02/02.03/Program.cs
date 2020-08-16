@@ -31,40 +31,66 @@ namespace _02_03
 
             Console.WriteLine("\nFiltrando por nome de diretor");
             Console.WriteLine("=============================");
-            var consulta =
-                from f in filmes
-                where f.Diretor.Nome == "Tim Burton"
-                select f;
+            // var consulta =
+            //     from f in filmes
+            //     where f.Diretor.Nome == "Tim Burton"
+            //     select f;
+
+            var consulta = filmes.Where(f => f.Diretor.Nome == "Tim Burton");
 
             Imprimir(consulta);
 
 
             Console.WriteLine("\nFiltrando e projetando resultado");
             Console.WriteLine("================================");
-            var consulta2 =
-                from f in filmes
-                where f.Diretor.Nome == "Tim Burton"
-                select new FilmeResumido
+            // var consulta2 =
+            //     from f in filmes
+            //     where f.Diretor.Nome == "Tim Burton"
+            //     select new FilmeResumido
+            //     {
+            //         Titulo = f.Titulo,
+            //         Diretor = f.Diretor.Nome
+            //     };
+
+            var consulta2 = filmes
+                .Where(f => f.Diretor.Nome == "Tim Burton")
+                .Select(f => new FilmeResumido()
                 {
                     Titulo = f.Titulo,
                     Diretor = f.Diretor.Nome
-                };
+                });
 
+            foreach (var item in consulta2)
+            {
+                Console.WriteLine("{0} - {1}", item.Titulo, item.Diretor);
+            }
 
             Console.WriteLine("\nRelacionando duas sequências");
             Console.WriteLine("============================");
 
-            var consulta4 =
-                from f in filmes
-                join d in diretores
-                    on f.DiretorId equals d.Id
-                where f.Diretor.Nome == "Tim Burton"
-                select new //OBJETO ANÔNIMO
-                {
-                    f.Titulo,
-                    Diretor = d.Nome
-                };
+            // var consulta4 =
+            //     from f in filmes
+            //     join d in diretores
+            //         on f.DiretorId equals d.Id
+            //     where f.Diretor.Nome == "Tim Burton"
+            //     select new //OBJETO ANÔNIMO
+            //     {
+            //         f.Titulo,
+            //         Diretor = d.Nome
+            //     };
 
+            var consulta4 =
+                filmes.Join(diretores,
+                        f => f.DiretorId,
+                        d => d.Id,
+                        (f, d) => new {f, d})
+                    .Where(x => x.f.Diretor.Nome == "Tim Burton")
+                    .Select(x => new
+                    {
+                        x.f.Titulo,
+                        Diretor = x.d.Nome
+                    });
+                            
             Console.WriteLine($"{"Título",-40} {"Diretor",-20}");
             Console.WriteLine(new string('=', 64));
             foreach (var filme in consulta4)

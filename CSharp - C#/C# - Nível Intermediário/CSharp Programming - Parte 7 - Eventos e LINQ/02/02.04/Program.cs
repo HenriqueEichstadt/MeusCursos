@@ -12,6 +12,18 @@ namespace _02_04
             List<Diretor> diretores = GetDiretores();
             List<Filme> filmes = GetFilmes();
 
+            var consulta = 
+                from f in filmes
+                where f.Diretor.Nome == "James Cameron"
+                select f;
+
+            var consultaArray = consulta.ToArray();
+            
+            foreach (var item in consultaArray)
+            {
+                Console.WriteLine(item.Titulo);
+            }
+            
             Console.ReadKey();
         }
 
