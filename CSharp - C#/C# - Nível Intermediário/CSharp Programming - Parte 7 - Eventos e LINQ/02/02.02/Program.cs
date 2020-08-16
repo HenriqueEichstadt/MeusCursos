@@ -10,29 +10,151 @@ namespace _02_02
         static void Main(string[] args)
         {
             var filmes = GetFilmes();
+            var diretores = GetDiretores();
 
-            var novoFilme = new Filme
+            var novoFilme = new Filme()
             {
-                Titulo = "A Fantástica Fábrica de Chocolate",
+                Titulo = "Fantástica Fábrica de Chocolate",
                 Ano = 2005,
-                Diretor = new Diretor { Id = 3, Nome = "Tim Burton" },
+                Diretor = new Diretor {Id = 3, Nome = "Tim Burton"},
                 DiretorId = 3
             };
 
             filmes.Add(novoFilme);
-
+            
             Imprimir(filmes);
+
+            // LINQ = (Language Integrated Query) - Consulta integrada à linguagem
+
+            // SELECT f.*
+            // FROM filmes AS f //ALIAS
+            // WHERE f.Diretor = "Tim Burton"
+
+            var consulta =
+                from f in filmes
+                where f.Diretor.Nome == "Tim Burton"
+                select f;
+
+            Imprimir(consulta);
+            
+            // SELECT f.Nome AS Titulo, f.Diretor
+            // FROM filmes AS f //ALIAS
+            // WHERE f.Diretor = "Tim Burton"
+            
+            var consulta2 =
+                from f in filmes
+                where f.Diretor.Nome == "Tim Burton"
+                select new FilmeResumido()
+                {
+                    Titulo = f.Titulo,
+                    Diretor = f.Diretor.Nome
+                };            
+            
+            Imprimir(consulta2);
+            
+            // Utilizando objetos anônimos
+            var consulta3 =
+                from f in filmes
+                where f.Diretor.Nome == "Tim Burton"
+                select new
+                {
+                    f.Titulo,
+                    Diretor = f.Diretor.Nome
+                };
+            
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20} {"Ano",-4}");
+            Console.WriteLine(new string('=', 64));
+            foreach (var filme in consulta3)
+            {
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor,-20}");
+            }
+            
+            // SELECT f.Nome AS Titulo, d.Nome AS Diretor
+            // FROM filmes AS f //ALIAS
+            // INNER JOIN Diretores AS d
+            //   ON d.Id = f.DiretorId
+            // WHERE d.Nome = "Tim Burton"
+            
+            var consulta4 =
+                from f in filmes
+                join d in diretores
+                    on f.DiretorId equals d.Id
+                where f.Diretor.Nome == "Tim Burton"
+                select new
+                {
+                    f.Titulo,
+                    Diretor = d.Nome
+                };
+            // Associação entre tabelas
+            
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20} {"Ano",-4}");
+            Console.WriteLine(new string('=', 64));
+            foreach (var filme in consulta4)
+            {
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor,-20}");
+            }
+            
+            // Agrupamento e Agregação
+            
+            // SELECT d.Nome AS Diretor, COUNT(*) AS Quantidade
+            // FROM filmes AS f //ALIAS
+            // INNER JOIN Diretores AS d
+            //   ON d.Id = f.DiretorId
+            // GROUP BY d.Id
+
+            var consulta5 =
+                from f in filmes
+                join d in diretores
+                    on f.DiretorId equals d.Id
+                group f by d
+                into agrupado
+                select new
+                {
+                    Diretor = agrupado.Key,
+                    Quantidade = agrupado.Count(),
+                    Total = agrupado.Sum(f => f.Minutos),
+                    Min = agrupado.Min(f => f.Minutos),
+                    Max = agrupado.Max(f => f.Minutos),
+                    Media = (int)agrupado.Average(f => f.Minutos)
+                };
+            
+            Console.WriteLine(
+                $"{"Nome",-30} " +
+                $"\t{"Qtd"}" + 
+                $"\t{"Total"}" + 
+                $"\t{"Min"}" + 
+                $"\t{"Max"}" + 
+                $"\t{"Media"}");
+            foreach (var item in consulta5)
+            {
+                Console.WriteLine(
+                    $"{item.Diretor.Nome,-30} " +
+                    $"\t{item.Quantidade}" + 
+                    $"\t{item.Total}" + 
+                    $"\t{item.Min}" + 
+                    $"\t{item.Max}" + 
+                    $"\t{item.Media}");
+            }
 
             Console.ReadKey();
         }
 
-        private static void Imprimir(List<Filme> filmes)
+        private static void Imprimir(IEnumerable<Filme> filmes)
         {
-            Console.WriteLine($"{"Título",-40} {"Diretor",-20} {"Ano",4}");
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20}");
             Console.WriteLine(new string('=', 64));
             foreach (var filme in filmes)
             {
-                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor.Nome,-20} {filme.Ano,4}");
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor.Nome,-20} {filme.Ano,-4}");
+            }
+        }
+        private static void Imprimir(IEnumerable<FilmeResumido> filmes)
+        {
+            Console.WriteLine($"{"Título",-40} {"Diretor",-20} {"Ano",-4}");
+            Console.WriteLine(new string('=', 64));
+            foreach (var filme in filmes)
+            {
+                Console.WriteLine($"{filme.Titulo,-40} {filme.Diretor,-20}");
             }
         }
 
@@ -131,5 +253,11 @@ namespace _02_02
         public string Titulo { get; set; }
         public int Ano { get; set; }
         public int Minutos { get; set; }
+    }
+    
+    class FilmeResumido
+    {
+        public string Titulo { get; set; }
+        public string Diretor { get; set; }
     }
 }
