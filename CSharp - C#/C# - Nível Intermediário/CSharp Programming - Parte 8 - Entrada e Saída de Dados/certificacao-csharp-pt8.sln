@@ -7,9 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinForms_Item17", "Item17\W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CursoService", "CursoService\CursoService.csproj", "{41B99B22-DFEE-4E30-8297-1AC53EFFD937}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Parte 8", "Parte 8", "{3DEDCA55-4DDF-4AC1-8519-DD19EB9702CE}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parte8", "Parte 8 - Codigo Antes\Parte 8\Parte8.csproj", "{6AD49E76-5E9D-4F9B-9DA5-720726F40262}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Parte8", "Parte 8\Parte8.csproj", "{6AD49E76-5E9D-4F9B-9DA5-720726F40262}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
