@@ -8,7 +8,7 @@ namespace Listings
 {
     class Item_04_ArquivosComprimidos
     {
-        static void Main(string[] args)
+        static void XMain(string[] args)
         {
             // Compactando arquivo em formato .zip
             using (var fluxoArquivo = new FileStream("Texto.zip", FileMode.OpenOrCreate, FileAccess.Write))

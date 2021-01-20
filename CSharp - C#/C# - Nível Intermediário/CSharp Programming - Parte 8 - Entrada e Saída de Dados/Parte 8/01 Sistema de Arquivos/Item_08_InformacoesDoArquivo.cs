@@ -7,7 +7,8 @@ namespace Listings
 {
     class Item_08_InformacoesDoArquivo
     {
-        static void XMain(string[] args)
+        private const string caminho = "Arquivo.txt";
+        static void Main(string[] args)
         {
             //TAREFA:
             //1. Gravar um texto em Arquivo.txt
@@ -21,6 +22,28 @@ namespace Listings
             //      Verificar os atributos novamente
             //      Remover atributo somente-leitura
             //      Verificar os atributos novamente
+            
+            File.WriteAllText(caminho, "Texto inicial do arquivo");
+
+            FileInfo info = new FileInfo(caminho);
+            Console.WriteLine("Nome: {0}", info.Name);
+            Console.WriteLine("Caminho completo: {0}", info.FullName);
+            Console.WriteLine("Último acesso: {0}", info.LastAccessTime);
+            Console.WriteLine("Tamanho: {0} bytes", info.Length);
+            Console.WriteLine("Atributos: {0}", info.Attributes);
+
+            // Operação binária para ligar um bit(atributo do arquivo)
+            // | -> OR binário
+            info.Attributes = info.Attributes | FileAttributes.ReadOnly;
+            
+            Console.WriteLine("Atributos: {0}", info.Attributes);
+            
+            // Operação binária para desligar bit(atributo do arquivo)
+            // & -> AND binário
+            info.Attributes = info.Attributes & ~FileAttributes.ReadOnly;
+            Console.WriteLine("Atributos: {0}", info.Attributes);
         }
+
+        
     }
 }
