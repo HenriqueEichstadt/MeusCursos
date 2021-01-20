@@ -8,7 +8,7 @@ namespace Listings
     class Item_08_InformacoesDoArquivo
     {
         private const string caminho = "Arquivo.txt";
-        static void Main(string[] args)
+        static void XMain(string[] args)
         {
             //TAREFA:
             //1. Gravar um texto em Arquivo.txt
