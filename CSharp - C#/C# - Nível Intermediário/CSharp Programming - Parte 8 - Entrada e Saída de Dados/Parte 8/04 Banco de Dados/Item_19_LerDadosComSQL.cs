@@ -9,18 +9,41 @@ namespace Listings
 {
     class Item_19_LerDadosComSQL
     {
-        private const string DatabaseServer = "";
+        private const string DatabaseServer = @"(localdb)\MSSQLLocalDB";
         private const string MasterDatabase = "master";
         private const string DatabaseName = "Cinema";
+        private const string ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
 
         static async Task XMain(string[] args)
         {
-            await CriarBancoDeDadosAsync();
+            //await CriarBancoDeDadosAsync();
 
             //TAREFAS:
             //1. ABRIR UMA CONEXÃO COM O BANCO DE DADOS
             //2. CRIAR UMA CONSULTA PARA TRAZER DIRETOR E TÍTULO DO FILME
             //3. LER E EXIBIR OS RESULTADOS DA CONSULTA
+
+            //ABRIR UMA CONEXÃO COM O BANCO DE DADOS
+            using (var conexao = new SqlConnection(ConnectionString))
+            {
+                await conexao.OpenAsync();
+
+                using (var comando = new SqlCommand(@"SELECT 
+	                                                            d.Nome AS Diretor, 
+	                                                            f.Titulo AS Titulo
+                                                            FROM Filmes AS f
+	                                                            INNER JOIN Diretores AS D ON D.Id = F.DiretorId", conexao))
+                {
+                    var leitor = await comando.ExecuteReaderAsync();
+                    while (await leitor.ReadAsync())
+                    {
+                        var diretor = leitor["DIRETOR"];
+                        var titulo = leitor["TITULO"];
+
+                        Console.WriteLine($"Diretor: {diretor} - Título: {titulo}");
+                    }
+                }
+            }
 
             Console.ReadKey();
         }

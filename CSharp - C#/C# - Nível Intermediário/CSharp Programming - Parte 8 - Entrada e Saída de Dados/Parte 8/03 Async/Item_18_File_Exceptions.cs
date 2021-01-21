@@ -8,7 +8,7 @@ namespace Listings
 {
     class Item_18_File_Exceptions
     {
-        static async Task Main(string[] args)
+        static async Task XMain(string[] args)
         {
             //TAREFA: CAPTURAR A EXCEÇÃO 
             //GERADA POR UM MÉTODO ASSÍNCRONO

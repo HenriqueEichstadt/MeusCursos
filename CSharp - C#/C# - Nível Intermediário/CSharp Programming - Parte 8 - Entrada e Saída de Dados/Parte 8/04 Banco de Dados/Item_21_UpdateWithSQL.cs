@@ -26,7 +26,7 @@ namespace Listings
 
                 SqlCommand command = new SqlCommand(
                 "UPDATE Diretores SET Nome ='QUENTIN TARANTINO' WHERE Id = 1", connection);
-                int result = command.ExecuteNonQuery();
+                int result = await command.ExecuteNonQueryAsync();
 
                 Console.WriteLine("Número de linhas atualizadas: {0}", result);
                 await ListarFilmes(connection);
