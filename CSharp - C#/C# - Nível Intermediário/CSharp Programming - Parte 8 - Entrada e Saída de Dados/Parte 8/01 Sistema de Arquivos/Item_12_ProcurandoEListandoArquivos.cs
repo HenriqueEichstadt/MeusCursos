@@ -7,7 +7,7 @@ namespace Listings
 {
     class Item_12_ProcurandoEListandoArquivos
     {
-        static void Main(string[] args)
+        static void XMain(string[] args)
         {
             //TAREFAS:
             //Obter o diretório de início do projeto
