@@ -16,14 +16,34 @@ namespace Listings
             //NO SERVIÇO DA http://viacep.com.br
             //E EXIBIR SEUS DADOS
 
-            Console.WriteLine(
-                $"Logradouro: " +
-                $"\nBairro: " +
-                $"\nMunicípio: " +
-                $"\nUF: " +
-                $"\nCEP: ");
+            string cep = "04101-300";
+            string url = $"http://viacep.com.br/ws/{cep}/json";
 
+            using (HttpClient cliente = new HttpClient())
+            {
+                var json = await cliente.GetStringAsync(url);
+                var endereco = JsonConvert.DeserializeObject<Endereco>(json);
+          
+            
+            
+            Console.WriteLine(
+                $"Logradouro: {endereco.logradouro}" +
+                $"\nBairro: {endereco.bairro}" +
+                $"\nMunicípio: {endereco.localidade}" +
+                $"\nUF: {endereco.uf}" +
+                $"\nCEP: {endereco.cep}");
+            }
             Console.ReadKey();
         }
     }
+
+    public class Endereco
+    {
+        public string cep { get; set; }
+        public string logradouro { get; set; }
+        public string bairro { get; set; }
+        public string localidade { get; set; }
+        public string uf { get; set; }
+    }
+    
 }

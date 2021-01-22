@@ -36,7 +36,30 @@ namespace Listings
                 "</Filme>" +
             "</Filmes>";
 
+            using (var leitor = new StringReader(xml))
+            {
+                var leitorXml = new XmlTextReader(leitor);
+                
+                while (leitorXml.Read())
+                {
+                    LerXml(leitorXml);
+                    if (leitorXml.HasAttributes)
+                    {
+                        while (leitorXml.MoveToNextAttribute())
+                        {
+                            LerXml(leitorXml);
+                        }
+                    }
+                }
+                
+            }
+            
             Console.ReadKey();
+        }
+
+        private static void LerXml(XmlTextReader leitorXml)
+        {
+            Console.WriteLine($"Tipo: {leitorXml.NodeType.ToString()}, Nome: {leitorXml.Name}, {leitorXml.Value}");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Listings
         private const string MasterDatabase = "master";
         private const string DatabaseName = "Cinema";
 
-        static async Task Main(string[] args)
+        static async Task XMain(string[] args)
         {
             await CriarBancoDeDadosAsync();
 
