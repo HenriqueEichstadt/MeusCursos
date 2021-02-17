@@ -13,6 +13,10 @@ namespace Cinema
 
         static async Task Main(string[] args)
         {
+            string assemblyName = typeof(Cinema.Program).Assembly.FullName;
+            Console.WriteLine(assemblyName);
+            Console.ReadKey();
+            
             var cinemaDB = new CinemaDB(DatabaseServer, MasterDatabase, DatabaseName);
 
             await cinemaDB.CriarBancoDeDadosAsync();
