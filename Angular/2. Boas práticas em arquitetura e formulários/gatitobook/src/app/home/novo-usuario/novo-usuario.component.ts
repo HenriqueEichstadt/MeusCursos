@@ -27,11 +27,7 @@ export class NovoUsuarioComponent implements OnInit {
       {
         email: ['', [Validators.required, Validators.email]],
         fullName: ['', [Validators.required, Validators.minLength(4)]],
-        userName: [
-          '',
-          [minusculoValidator],
-          [this.usuarioExistenteServive.usuarioJaExite()],
-        ],
+        userName: ['', [minusculoValidator], [this.usuarioExistenteServive.usuarioJaExite()], ],
         password: [''],
       },
       {
