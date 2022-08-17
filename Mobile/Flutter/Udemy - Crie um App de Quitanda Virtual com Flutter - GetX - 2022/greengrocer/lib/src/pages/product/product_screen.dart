@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
-import 'package:greengrocer/src/modelos/item_model.dart';
+import 'package:greengrocer/src/models/item_model.dart';
 import 'package:greengrocer/src/pages/common_widgets/quantity_widget.dart';
 import 'package:greengrocer/src/services/utils_services.dart';
 
 class ProductScreen extends StatefulWidget {
-  
-  final ItemModel item;
-
-  const ProductScreen({
+  ProductScreen({
     Key? key,
     required this.item,
   }) : super(key: key);
+
+  final ItemModel item;
 
   @override
   State<ProductScreen> createState() => _ProductScreenState();
@@ -28,8 +27,7 @@ class _ProductScreenState extends State<ProductScreen> {
       backgroundColor: Colors.white.withAlpha(230),
       body: Stack(
         children: [
-          
-          // Conteudo
+          // Conteúdo
           Column(
             children: [
               Expanded(
@@ -41,15 +39,15 @@ class _ProductScreenState extends State<ProductScreen> {
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.all(32),
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.vertical(
+                    borderRadius: const BorderRadius.vertical(
                       top: Radius.circular(50),
                     ),
                     boxShadow: [
                       BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(0, 2),
+                        color: Colors.grey.shade600,
+                        offset: const Offset(0, 2),
                       ),
                     ],
                   ),
@@ -57,7 +55,6 @@ class _ProductScreenState extends State<ProductScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       // Nome - Quantidade
-
                       Row(
                         children: [
                           Expanded(
@@ -76,7 +73,7 @@ class _ProductScreenState extends State<ProductScreen> {
                             value: cartItemQuantity,
                             result: (quantity) {
                               setState(() {
-                                cartItemQuantity = quantity;  
+                                cartItemQuantity = quantity;
                               });
                             },
                           ),
@@ -117,7 +114,7 @@ class _ProductScreenState extends State<ProductScreen> {
                               borderRadius: BorderRadius.circular(15),
                             ),
                           ),
-                          onPressed: () {}, 
+                          onPressed: () {},
                           label: const Text(
                             'Add no carrinho',
                             style: TextStyle(
@@ -137,14 +134,16 @@ class _ProductScreenState extends State<ProductScreen> {
               ),
             ],
           ),
-        
+
+          // Botão voltar
           Positioned(
             left: 10,
             top: 10,
             child: SafeArea(
               child: IconButton(
                 onPressed: () => Navigator.of(context).pop(),
-                icon: const Icon(Icons.arrow_back_ios,
+                icon: const Icon(
+                  Icons.arrow_back_ios,
                 ),
               ),
             ),

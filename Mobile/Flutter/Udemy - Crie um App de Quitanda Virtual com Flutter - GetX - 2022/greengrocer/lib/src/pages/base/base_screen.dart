@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-
-import '../home/home_tab.dart';
+import 'package:greengrocer/src/pages/cart/cart_tab.dart';
+import 'package:greengrocer/src/pages/home/home_tab.dart';
+import 'package:greengrocer/src/pages/orders/orders_tab.dart';
+import 'package:greengrocer/src/pages/profile/profile_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({Key? key}) : super(key: key);
@@ -11,31 +13,32 @@ class BaseScreen extends StatefulWidget {
 
 class _BaseScreenState extends State<BaseScreen> {
   int currentIndex = 0;
-  final pageController = PageController(
-
-  );
+  final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       body: PageView(
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
-        children: [
-          const HomeTab(),
-          Container(color: Colors.yellow),
-          Container(color: Colors.blue),
-          Container(color: Colors.purple),
+        children: const [
+          HomeTab(),
+          CartTab(),
+          OrdersTab(),
+          ProfileTab(),
         ],
       ),
-
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
             currentIndex = index;
             pageController.jumpToPage(index);
+            // pageController.animateToPage(
+            //   index,
+            //   duration: const Duration(milliseconds: 500),
+            //   curve: Curves.easeInOutQuart,
+            // );
           });
         },
         type: BottomNavigationBarType.fixed,
@@ -56,10 +59,11 @@ class _BaseScreenState extends State<BaseScreen> {
             label: 'Pedidos',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outlined),
-            label: 'Perfil',
+            icon: Icon(Icons.person_outline),
+            label: 'perfil',
           ),
-      ]),
+        ],
+      ),
     );
   }
 }

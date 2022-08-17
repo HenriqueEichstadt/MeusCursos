@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/components/custom_text_field.dart';
 import 'package:greengrocer/src/config/custom_colors.dart';
+import 'package:greengrocer/src/pages/common_widgets/custom_text_field.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -11,15 +11,14 @@ class SignUpScreen extends StatelessWidget {
     filter: {'#': RegExp(r'[0-9]')},
   );
 
-    final phoneFormatter = MaskTextInputFormatter(
+  final phoneFormatter = MaskTextInputFormatter(
     mask: '## # ####-####',
     filter: {'#': RegExp(r'[0-9]')},
   );
 
   @override
   Widget build(BuildContext context) {
-
-  final size = MediaQuery.of(context).size;
+    final size = MediaQuery.of(context).size;
 
     return Scaffold(
       backgroundColor: CustomColors.customSwatchColor,
@@ -42,8 +41,8 @@ class SignUpScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-      
-                  // Formuláiro
+
+                  // Formulario
                   Container(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 32,
@@ -103,24 +102,21 @@ class SignUpScreen extends StatelessWidget {
                   ),
                 ],
               ),
-
-              // Botão voltar
               Positioned(
-                left: 10,
                 top: 10,
+                left: 10,
                 child: SafeArea(
                   child: IconButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
                     icon: const Icon(
-                      Icons.arrow_back_ios, 
+                      Icons.arrow_back_ios,
                       color: Colors.white,
                     ),
                   ),
                 ),
               ),
-
             ],
           ),
         ),

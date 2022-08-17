@@ -1,5 +1,7 @@
-
-import 'package:greengrocer/src/modelos/item_model.dart';
+import 'package:greengrocer/src/models/cart_item_model.dart';
+import 'package:greengrocer/src/models/item_model.dart';
+import 'package:greengrocer/src/models/order_model.dart';
+import 'package:greengrocer/src/models/user_model.dart';
 
 ItemModel apple = ItemModel(
   description:
@@ -72,7 +74,6 @@ List<String> categories = [
   'Careais',
 ];
 
-/*
 List<CartItemModel> cartItems = [
   CartItemModel(
     item: apple,
@@ -141,4 +142,3 @@ List<OrderModel> orders = [
     ],
   ),
 ];
-*/
