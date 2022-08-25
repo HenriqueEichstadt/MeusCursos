@@ -95,6 +95,7 @@ UserModel user = UserModel(
   email: 'user@email.com',
   name: 'New User',
   password: '',
+  id: '',
 );
 
 List<OrderModel> orders = [
